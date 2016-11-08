@@ -31,8 +31,7 @@ Boilerplate: omit feedback-header, omit conformance, omit index, omit idl-index
   "XMLNS": {
     "aliasOf": "XML-NAMES"
   }
-}
-</pre>
+}</pre>
 
 
 <h2 id=introduction>Introduction</h2>
@@ -49,7 +48,8 @@ functionality.
  <p>Some simple code to do something with data from an XML document
  fetched over the network:
 
- <pre><code>function processData(data) {
+ <pre>
+<code>function processData(data) {
   // taking care of data
 }
 
@@ -72,7 +72,8 @@ client.send();</code></pre>
 
  <p>If you just want to log a message to the server:
 
- <pre><code>function log(message) {
+ <pre>
+<code>function log(message) {
   var client = new XMLHttpRequest();
   client.open("POST", "/log");
   client.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
@@ -81,7 +82,8 @@ client.send();</code></pre>
 
  <p>Or if you want to check the status of a document on the server:
 
- <pre><code>function fetchStatus(address) {
+ <pre>
+<code>function fetchStatus(address) {
   var client = new XMLHttpRequest();
   client.onload = function() {
     // in case of network errors this might not give reliable results
@@ -164,7 +166,8 @@ Specifically it does not refer to proxy authentication or the
 
 <h2 id=interface-xmlhttprequest>Interface <code>XMLHttpRequest</code></h2>
 
-<pre class=idl>[Exposed=(Window,DedicatedWorker,SharedWorker)]
+<pre class=idl>
+[Exposed=(Window,DedicatedWorker,SharedWorker)]
 interface XMLHttpRequestEventTarget : EventTarget {
   // event handlers
   attribute EventHandler onloadstart;
@@ -444,7 +447,7 @@ experiment with <a lt=throw>throwing</a> an
 <code>InvalidAccessError</code> exception when it occurs.
 
 <p>The
-<dfn id=dom-xmlhttprequest-open lt="dom XMLHttpRequest open"><code>open(<var>method</var>, <var>url</var>, <var>async</var>, <var>username</var>, <var>password</var>)</code></dfn>
+<dfn id=dom-xmlhttprequest-open method for=XMLHttpRequest><code>open(<var>method</var>, <var>url</var>, <var>async</var>, <var>username</var>, <var>password</var>)</code></dfn>
 method, when invoked, must run these steps:
 
 <ol>
@@ -606,7 +609,8 @@ method must run these steps:
  <p>Some simple code demonstrating what happens when setting the same
  header twice:
 
- <pre><code>// The following script:
+ <pre>
+<code>// The following script:
 var client = new XMLHttpRequest();
 client.open('GET', 'demo.cgi');
 client.setRequestHeader('X-Test', 'one');
@@ -1211,12 +1215,12 @@ exception <var>exception</var> are:
 <h4 id=the-abort()-method>The <code>abort()</code> method</h4>
 
   <dl class=domintro>
-   <dt><code><var>client</var> . <a lt="dom XMLHttpRequest abort">abort</a>()</code>
+   <dt><code><var>client</var> . <a method for=XMLHttpRequest>abort()</a></code>
    <dd>Cancels any network activity.
   </dl>
 
-<p>The <dfn lt="dom XMLHttpRequest abort"><code>abort()</code></dfn> method, when invoked, must
-run these steps:
+<p>The <dfn id=dom-xmlhttprequest-abort method for=XMLHTtpRequest><code>abort()</code></dfn> method,
+when invoked, must run these steps:
 
 <ol>
  <li><p><a>Terminate the request</a>.
@@ -1297,7 +1301,8 @@ method must run these steps:
 
  <p>For the following script:
 
- <pre><code>var client = new XMLHttpRequest();
+ <pre>
+<code>var client = new XMLHttpRequest();
 client.open("GET", "unicorns-are-teh-awesome.txt", true);
 client.send();
 client.onreadystatechange = function() {
@@ -1309,7 +1314,8 @@ client.onreadystatechange = function() {
  <p>The <code>print()</code> function will get to process something
  like:
 
- <pre><code>text/plain; charset=UTF-8</code></pre>
+ <pre>
+<code>text/plain; charset=UTF-8</code></pre>
 </div>
 
 
@@ -1350,7 +1356,8 @@ method, when invoked, must run these steps:
 <div id=example-getresponseheaders class=example>
  <p>For the following script:
 
- <pre><code>var client = new XMLHttpRequest();
+ <pre>
+<code>var client = new XMLHttpRequest();
 client.open("GET", "narwhals-too.txt", true);
 client.send();
 client.onreadystatechange = function() {
@@ -1362,7 +1369,8 @@ client.onreadystatechange = function() {
  <p>The <code>print()</code> function will get to process something
  like:
 
- <pre><code>Date: Sun, 24 Oct 2004 04:58:38 GMT
+ <pre>
+<code>Date: Sun, 24 Oct 2004 04:58:38 GMT
 Server: Apache/1.3.31 (Unix)
 Keep-Alive: timeout=15, max=99
 Connection: Keep-Alive
@@ -1870,7 +1878,8 @@ and/or <code>XMLHttpRequestUpload</code> objects:
 
 <h2 id=interface-formdata>Interface <code>FormData</code></h2>
 
-<pre class=idl>typedef (File or USVString) FormDataEntryValue;
+<pre class=idl>
+typedef (File or USVString) FormDataEntryValue;
 
 [Constructor(optional HTMLFormElement form),
  Exposed=(Window,Worker)]
@@ -2006,7 +2015,8 @@ method, when invoked, must run these steps:
 
 <h2 id=interface-progressevent>Interface <code>ProgressEvent</code></h2>
 
-<pre class=idl>[Constructor(DOMString type, optional ProgressEventInit eventInitDict),
+<pre class=idl>
+[Constructor(DOMString type, optional ProgressEventInit eventInitDict),
  Exposed=(Window,DedicatedWorker,SharedWorker)]
 interface ProgressEvent : Event {
   readonly attribute boolean lengthComputable;
@@ -2137,7 +2147,8 @@ otherwise. [[!FETCH]]
  display the process of
  <a>fetching</a> a resource.
 
- <pre>&lt;!DOCTYPE html>
+ <pre>
+&lt;!DOCTYPE html>
 &lt;title>Waiting for Magical Unicorns&lt;/title>
 &lt;progress id=p>&lt;/progress>
 &lt;script>
