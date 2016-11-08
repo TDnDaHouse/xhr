@@ -38,10 +38,10 @@ Boilerplate: omit feedback-header, omit conformance, omit index, omit idl-index
 
 <p><em>This section is non-normative.</em>
 
-<p>The <code>XMLHttpRequest</code> object is an API for
+<p>The {{XMLHttpRequest}} object is an API for
 <a>fetching</a> resources.
 
-<p>The name <code>XMLHttpRequest</code> is historical and has no bearing on its
+<p>The name {{XMLHttpRequest}} is historical and has no bearing on its
 functionality.
 
 <div id=example-xhr class=example>
@@ -97,12 +97,12 @@ client.send();</code></pre>
 
 <h3 id=specification-history>Specification history</h3>
 
-<p>The <code>XMLHttpRequest</code> object was initially defined as part of
+<p>The {{XMLHttpRequest}} object was initially defined as part of
 the WHATWG's HTML effort. (Based on Microsoft's implementation many years prior.)
 It moved to the W3C in 2006. Extensions (e.g. progress events and
-cross-origin requests) to <code>XMLHttpRequest</code> were developed in a
+cross-origin requests) to {{XMLHttpRequest}} were developed in a
 separate draft (XMLHttpRequest Level 2) until end of 2011, at which point
-the two drafts were merged and <code>XMLHttpRequest</code> became a single
+the two drafts were merged and {{XMLHttpRequest}} became a single
 entity again from a standards perspective. End of 2012 it moved back to the
 WHATWG.
 
@@ -164,7 +164,7 @@ Specifically it does not refer to proxy authentication or the
 [[!COOKIES]] <!-- XXX ref? -->
 
 
-<h2 id=interface-xmlhttprequest>Interface <code>XMLHttpRequest</code></h2>
+<h2 id=interface-xmlhttprequest>Interface {{XMLHttpRequest}}</h2>
 
 <pre class=idl>
 [Exposed=(Window,DedicatedWorker,SharedWorker)]
@@ -229,10 +229,10 @@ interface XMLHttpRequest : XMLHttpRequestEventTarget {
   [Exposed=Window] readonly attribute Document? responseXML;
 };</pre>
 
-<p>An <code>XMLHttpRequest</code> object has an associated
+<p>An {{XMLHttpRequest}} object has an associated
 <code>XMLHttpRequestUpload</code> object.
 
-<p>An <code>XMLHttpRequest</code> object has an associated
+<p>An {{XMLHttpRequest}} object has an associated
 <dfn>state</dfn>, which is one of
 <i>unsent</i>,
 <i>opened</i>,
@@ -240,10 +240,10 @@ interface XMLHttpRequest : XMLHttpRequestEventTarget {
 <i>loading</i>, and
 <i>done</i>. Unless stated otherwise it is <i>unsent</i>.
 
-<p>An <code>XMLHttpRequest</code> object has an associated
+<p>An {{XMLHttpRequest}} object has an associated
 <dfn id=send-flag><code>send()</code> flag</dfn>. Unless stated otherwise it is unset.
 
-<p>An <code>XMLHttpRequest</code> object has an associated <dfn>stop timeout flag</dfn>.
+<p>An {{XMLHttpRequest}} object has an associated <dfn>stop timeout flag</dfn>.
 Unless stated otherwise it is unset.
 
 
@@ -251,17 +251,17 @@ Unless stated otherwise it is unset.
 
 <dl class=domintro>
  <dt><code><var>client</var> = new <a lt="dom XMLHttpRequest">XMLHttpRequest</a>()</code>
- <dd>Returns a new <code>XMLHttpRequest</code> object.
+ <dd>Returns a new {{XMLHttpRequest}} object.
 </dl>
 
 <p>The <dfn lt="dom XMLHttpRequest"><code>XMLHttpRequest()</code></dfn> constructor, when
-invoked, must return a new <code>XMLHttpRequest</code> object.
+invoked, must return a new {{XMLHttpRequest}} object.
 
 
 <h3 id=garbage-collection>Garbage collection</h3>
 <!-- Based on EventSource and WebSocket. Not sure what I am doing. -->
 
-<p>An <code>XMLHttpRequest</code> object must not be garbage collected if its
+<p>An {{XMLHttpRequest}} object must not be garbage collected if its
 <a>state</a> is either
 <i>opened</i> with the <a><code>send()</code> flag</a> set,
 <i>headers received</i>, or <i>loading</i>, and it has one or more
@@ -276,7 +276,7 @@ registered whose <b>type</b> is one of
 <a><code>loadend</code></a>.
 <!-- No need to mention upload event listeners as they happen during /opened/. -->
 
-<p>If an <code>XMLHttpRequest</code> object is garbage collected while its
+<p>If an {{XMLHttpRequest}} object is garbage collected while its
 connection is still open, the user agent must <a>terminate the request</a>.
 
 
@@ -322,7 +322,7 @@ from <code>XMLHttpRequestEventTarget</code> as attributes:
 (and its corresponding
 <a>event handler event type</a>) that must be
 supported as attribute solely by the
-<code>XMLHttpRequest</code> object:
+{{XMLHttpRequest}} object:
 
 <table>
  <thead>
@@ -384,7 +384,7 @@ column, from the row where the value in the cell in the first column is
 
 <h3 id=request>Request</h3>
 
-<p>Each <code>XMLHttpRequest</code> object has the following
+<p>Each {{XMLHttpRequest}} object has the following
 request-associated concepts:
 
 <dfn>request method</dfn>,
@@ -408,7 +408,7 @@ request-associated concepts:
 <p>To <dfn>terminate the request</dfn>,
 <a>terminate</a> the
 <a>fetch</a> algorithm operated by the
-<code>XMLHttpRequest</code> object with reason <i>fatal</i>.
+{{XMLHttpRequest}} object with reason <i>fatal</i>.
 
 
 
@@ -436,7 +436,7 @@ request-associated concepts:
   <a><code>responseType</code></a> attribute is not the empty string.
 </dl>
 
-<p class="critical no-backref" id=sync-warning>Synchronous <code>XMLHttpRequest</code>
+<p class="critical no-backref" id=sync-warning>Synchronous {{XMLHttpRequest}}
 outside of workers is in the process of being removed from the web platform as it has
 detrimental effects to the end user's experience. (This is a long process that takes many
 years.) Developers must not pass false for the <var>async</var> argument when
@@ -728,7 +728,7 @@ attribute has no effect when
 attribute must return the associated
 <code>XMLHttpRequestUpload</code> object.
 
-<p class=note>As indicated earlier, each <code>XMLHttpRequest</code>
+<p class=note>As indicated earlier, each {{XMLHttpRequest}}
 object has an associated <code>XMLHttpRequestUpload</code> object.
 
 
@@ -1242,11 +1242,11 @@ when invoked, must run these steps:
 
 <h3 id=xmlhttprequest-response>Response</h3>
 
-<p>An <code>XMLHttpRequest</code> has an associated <dfn>response</dfn>. Unless stated
+<p>An {{XMLHttpRequest}} has an associated <dfn>response</dfn>. Unless stated
 otherwise it is a
 <a>network error</a>.
 
-<p>An <code>XMLHttpRequest</code> also has an associated <dfn>received bytes</dfn> (a byte
+<p>An {{XMLHttpRequest}} also has an associated <dfn>received bytes</dfn> (a byte
 sequence). Unless stated otherwise it is the empty byte sequence.
 
 <h4 id=the-responseurl-attribute>The <code>responseURL</code> attribute</h4>
@@ -1405,7 +1405,7 @@ that is null in which case it is the <a>response charset</a>.
 
 <hr>
 
-<p>An <code>XMLHttpRequest</code> object has an associated
+<p>An {{XMLHttpRequest}} object has an associated
 <dfn>response <code>ArrayBuffer</code> object</dfn>,
 <dfn>response <code>Blob</code> object</dfn>,
 <dfn>response <code>Document</code> object</dfn>, and a
@@ -1829,7 +1829,7 @@ as <a>documents</a>.
 
 <p><em>This section is non-normative.</em>
 
-<p>The following events are dispatched on <code>XMLHttpRequest</code>
+<p>The following events are dispatched on {{XMLHttpRequest}}
 and/or <code>XMLHttpRequestUpload</code> objects:
 
 <table>
@@ -1846,37 +1846,37 @@ and/or <code>XMLHttpRequestUpload</code> objects:
    value, except when it changes to <a lt="dom XMLHttpRequest UNSENT">UNSENT</a>.
   <tr>
    <td><dfn lt="event xhr loadstart"><code>loadstart</code></dfn>
-   <td><code>ProgressEvent</code>
+   <td>{{ProgressEvent}}
    <td>The fetch initiates.
   <tr>
    <td><dfn lt="event xhr progress"><code>progress</code></dfn>
-   <td><code>ProgressEvent</code>
+   <td>{{ProgressEvent}}
    <td>Transmitting data.
   <tr>
    <td><dfn lt="event xhr abort"><code>abort</code></dfn>
-   <td><code>ProgressEvent</code>
+   <td>{{ProgressEvent}}
    <td>When the fetch has been aborted. For instance, by invoking the
    <a><code>abort()</code></a> method.
   <tr>
    <td><dfn lt="event xhr error"><code>error</code></dfn>
-   <td><code>ProgressEvent</code>
+   <td>{{ProgressEvent}}
    <td>The fetch failed.
   <tr>
    <td><dfn lt="event xhr load"><code>load</code></dfn>
-   <td><code>ProgressEvent</code>
+   <td>{{ProgressEvent}}
    <td>The fetch succeeded.
   <tr>
    <td><dfn lt="event xhr timeout"><code>timeout</code></dfn>
-   <td><code>ProgressEvent</code>
+   <td>{{ProgressEvent}}
    <td>The author specified timeout has passed before the fetch completed.
   <tr>
    <td><dfn lt="event xhr loadend"><code>loadend</code></dfn>
-   <td><code>ProgressEvent</code>
+   <td>{{ProgressEvent}}
    <td>The fetch completed (success or failure).
 </table>
 
 
-<h2 id=interface-formdata>Interface <code>FormData</code></h2>
+<h2 id=interface-formdata>Interface {{FormData}}</h2>
 
 <pre class=idl>
 typedef (File or USVString) FormDataEntryValue;
@@ -1895,7 +1895,7 @@ interface FormData {
   iterable&lt;USVString, FormDataEntryValue>;
 };</pre>
 
-<p>The <code>FormData</code> object represents an ordered list of
+<p>The {{FormData}} object represents an ordered list of
 <dfn>entries</dfn>. Each
 <a>entry</a> consists of a
 <dfn>name</dfn> and a
@@ -1946,7 +1946,7 @@ value of <a>entry</a>'s
 constructor must run these steps:
 
 <ol>
- <li><p>Let <var>fd</var> be a new <code>FormData</code> object.
+ <li><p>Let <var>fd</var> be a new {{FormData}} object.
 
  <li><p>If <var>form</var> is given, set <var>fd</var>'s
  <a>entries</a> to the result of
@@ -2013,7 +2013,7 @@ method, when invoked, must run these steps:
 <a>value</a>.
 
 
-<h2 id=interface-progressevent>Interface <code>ProgressEvent</code></h2>
+<h2 id=interface-progressevent>Interface {{ProgressEvent}}</h2>
 
 <pre class=idl>
 [Constructor(DOMString type, optional ProgressEventInit eventInitDict),
@@ -2030,7 +2030,7 @@ dictionary ProgressEventInit : EventInit {
   unsigned long long total = 0;
 };</pre>
 
-<p><a>Events</a> using the <code>ProgressEvent</code> interface indicate some kind of progression.
+<p><a>Events</a> using the {{ProgressEvent}} interface indicate some kind of progression.
 
 <p>The
 <dfn id=dom-progressevent-lengthcomputable attribute for=ProgressEvent><code>lengthComputable</code></dfn>,
@@ -2039,14 +2039,14 @@ dictionary ProgressEventInit : EventInit {
 attributes must return the value they were initialized to.
 
 
-<h3 id=firing-events-using-the-progressevent-interface>Firing events using the <code>ProgressEvent</code> interface</h3>
+<h3 id=firing-events-using-the-progressevent-interface>Firing events using the {{ProgressEvent}} interface</h3>
 
 <p>To
 <dfn>fire a progress event named <var>e</var></dfn>
 given <var>transmitted</var> and <var>length</var>,
 <a>fire an event named <var>e</var></a>
 with an <a>event</a>
-using the <code>ProgressEvent</code> interface that also meets these
+using the {{ProgressEvent}} interface that also meets these
 conditions:
 
 <ul class=brief>
@@ -2060,14 +2060,14 @@ conditions:
 </ul>
 
 
-<h3 id=suggested-names-for-events-using-the-progressevent-interface>Suggested names for events using the <code>ProgressEvent</code> interface</h3>
+<h3 id=suggested-names-for-events-using-the-progressevent-interface>Suggested names for events using the {{ProgressEvent}} interface</h3>
 
 <p><em>This section is non-normative.</em>
 
 <p>The suggested <a><code>type</code></a>
 attribute values for use with
 <a>events</a> using the
-<code>ProgressEvent</code> interface are summarized in the table below.
+{{ProgressEvent}} interface are summarized in the table below.
 Specification editors are free to tune the details to their specific
 scenarios, though are strongly encouraged to discuss their usage with the
 WHATWG community to ensure input from people familiar with the subject.
@@ -2124,7 +2124,7 @@ their <a><code>bubbles</code></a> and
 <a><code>cancelable</code></a>
 attributes initialized to false, so it is suggested that for consistency all
 <a>events</a> using the
-<code>ProgressEvent</code> interface do the same.
+{{ProgressEvent}} interface do the same.
 
 
 <h3 id=security-considerations>Security Considerations</h3>
@@ -2132,7 +2132,7 @@ attributes initialized to false, so it is suggested that for consistency all
 <p>For cross-origin requests some kind of opt-in, e.g. the
 <a>CORS protocol</a> defined in the Fetch Standard, has to be
 used before <a>events</a> using the
-<code>ProgressEvent</code> interface are
+{{ProgressEvent}} interface are
 <a>dispatched</a>
 as information (e.g. size) would be revealed that cannot be obtained
 otherwise. [[!FETCH]]
@@ -2141,7 +2141,7 @@ otherwise. [[!FETCH]]
 <h3 id=example>Example</h3>
 
 <div id=example-progress-events class=example>
- <p>In this example <code>XMLHttpRequest</code>, combined with concepts
+ <p>In this example {{XMLHttpRequest}}, combined with concepts
  defined in the sections before, and the HTML
  <code>progress</code> element are used together to
  display the process of
@@ -2279,14 +2279,14 @@ Zhenbin Xu
 for their contributions to this standard.
 
 <p>Special thanks to the Microsoft employees who first implemented the
-<code>XMLHttpRequest</code> interface, which was first widely deployed by the
+{{XMLHttpRequest}} interface, which was first widely deployed by the
 Windows Internet Explorer browser.
 
 <p>Special thanks to Ian Hickson for drafting an initial version of this specification in
 the HTML Standard (then Web Applications 1.0). [[!HTML]]
 
 <p>Special thanks to the W3C SVG WG for drafting the original
-<code>ProgressEvent</code> class as part of the
+{{ProgressEvent}} class as part of the
 <a href=https://www.w3.org/TR/2008/REC-SVGTiny12-20081222/svgudom.html>SVG Micro DOM</a>.
 
 <p>This standard is written by
