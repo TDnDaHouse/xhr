@@ -1,58 +1,38 @@
-<!doctype html>
-<html lang=en-US>
-<meta charset=utf-8>
-<meta content=width=device-width,initial-scale=1,shrink-to-fit=no name=viewport>
-<meta content=#3c790a name=theme-color>
-<title>XMLHttpRequest Standard</title>
-<link href=https://resources.whatwg.org/standard.css rel=stylesheet>
-<link href=https://resources.whatwg.org/logo-xhr.svg rel=icon>
-
-<div class="head">
-
-<p><a class=logo href=https://whatwg.org/><img alt=WHATWG src=https://resources.whatwg.org/logo-xhr.svg width=100 height=100></a>
-<h1 id="xmlhttprequest-ls">XMLHttpRequest</h1>
-<h2 class="no-num no-toc">Living Standard &mdash; Last Updated [DATE: 3 August 2002]</h2>
-
-<dl>
- <dt>Participate:
- <dd><a href=https://github.com/whatwg/xhr>GitHub whatwg/xhr</a>
- (<a href=https://github.com/whatwg/xhr/issues/new>file an issue</a>,
- <a href=https://github.com/whatwg/xhr/issues>open issues</a>,
- <a href="https://www.w3.org/Bugs/Public/buglist.cgi?product=WebAppsWG&amp;component=XHR&amp;resolution=---">legacy open bugs</a>)
- <dd><a href=https://wiki.whatwg.org/wiki/IRC>IRC: #whatwg on Freenode</a>
-
- <dt>Commits:
- <dd><a href=https://github.com/whatwg/xhr/commits>GitHub whatwg/xhr/commits</a>
- <dd><a href=https://twitter.com/xhrstandard>@xhrstandard</a>
-
- <dt id=xmlhttprequest-tests>Tests:
- <dd><a href=https://w3c-test.org/XMLHttpRequest/>XMLHttpRequest tests</a> are hosted in
-  the <a href="https://github.com/w3c/web-platform-tests/">W3C Web platform testsuite</a>
-  &mdash; contributions welcome!
-
- <dt>Translation <small>(non-normative)</small>:
- <dd title=Japanese><a href=https://triple-underscore.github.io/XHR-ja.html lang=ja hreflang=ja>日本語</a>
-</dl>
+<pre class=metadata>
+Title: XMLHttpRequest Standard
+Group: WHATWG
+H1: XMLHttpRequest
+Shortname: xhr
+Status: LS
+No Editor: true
+Abstract: The XMLHttpRequest Standard defines an API that provides scripted client functionality for transferring data between a client and a server.
+Logo: https://resources.whatwg.org/logo-xhr.svg
+Boilerplate: omit feedback-header, omit conformance, omit index, omit idl-index
+!Participate: <a href=https://github.com/whatwg/xhr>GitHub whatwg/xhr</a> (<a href=https://github.com/whatwg/xhr/issues/new>file an issue</a>, <a href=https://github.com/whatwg/xhr/issues>open issues</a>, <a href="https://www.w3.org/Bugs/Public/buglist.cgi?product=WebAppsWG&amp;component=XHR&amp;resolution=---">legacy open bugs</a>)
+!Participate: <a href=https://wiki.whatwg.org/wiki/IRC>IRC: #whatwg on Freenode</a>
+!Commits: <a href=https://github.com/whatwg/xhr/commits>GitHub whatwg/xhr/commits</a>
+!Commits: <a href=https://twitter.com/fullscreenapi>@fullscreenapi</a>
+!Tests: <a href=https://w3c-test.org/XMLHttpRequest/>XMLHttpRequest tests</a> are hosted in the <a href="https://github.com/w3c/web-platform-tests/">W3C Web platform testsuite</a> &mdash; contributions welcome!
+!Translation (non-normative): <span title=Japanese><a href=https://triple-underscore.github.io/XHR-ja.html lang=ja hreflang=ja rel=alternate>日本語</a></span>
+</pre>
 
 <script src=https://resources.whatwg.org/file-issue.js async></script>
 <script src=annotate_spec.js async></script>
-<script id=head src=https://resources.whatwg.org/dfn.js defer></script>
+<script src=https://resources.whatwg.org/dfn.js defer></script>
 
-</div>
-
-
-
-<h2 class="no-num no-toc" id=specabstract>Abstract</h2>
-
-<p>XMLHttpRequest defines an API that provides scripted client functionality for
-transferring data between a client and a server.
-
-
-
-<h2 class="no-num no-toc" id=toc>Table of Contents</h2>
-
-<!--toc-->
-
+<pre class=biblio>
+{
+  "DOMPS": {
+    "aliasOf": "DOM-PARSING"
+  },
+  "HTTP": {
+    "aliasOf": "HTTP11"
+  },
+  "XMLNS": {
+    "aliasOf": "XML-NAMES"
+  }
+}
+</pre>
 
 
 <h2 id=introduction>Introduction</h2>
@@ -135,7 +115,6 @@ archives:
 </ul>
 
 
-
 <h2 id=conformance>Conformance</h2>
 
 <p>All diagrams, examples, and notes in this specification are
@@ -155,7 +134,6 @@ not appear in all uppercase letters in this specification.
 <p>User agents, Working Groups, and other interested parties are
 <em>strongly encouraged</em> to discuss new features with the WHATWG
 community.
-
 
 
 <h2 id=terminology>Terminology</h2>
@@ -182,7 +160,6 @@ specification means cookies, HTTP authentication, and TLS client certificates.
 Specifically it does not refer to proxy authentication or the
 <a><code>Origin</code></a> header.
 [[!COOKIES]] <!-- XXX ref? -->
-
 
 
 <h2 id=interface-xmlhttprequest>Interface <code>XMLHttpRequest</code></h2>
@@ -822,7 +799,7 @@ method must run these steps:
   contains no <a>header</a>
   <a>named</a>
   `<code>Content-Type</code>`,
-  <a>append</a>
+  <a for="header list">append</a>
   `<code>Content-Type</code>`/<var>Content-Type</var> to
   <a>author request headers</a>.
 
@@ -1891,23 +1868,22 @@ and/or <code>XMLHttpRequestUpload</code> objects:
 </table>
 
 
-
 <h2 id=interface-formdata>Interface <code>FormData</code></h2>
 
-<pre class=idl>typedef (<a>File</a> or USVString) <dfn>FormDataEntryValue</dfn>;
+<pre class=idl>typedef (File or USVString) FormDataEntryValue;
 
-[<a lt="dom FormData">Constructor</a>(optional <a>HTMLFormElement</a> <var>form</var>),
+[Constructor(optional HTMLFormElement form),
  Exposed=(Window,Worker)]
-interface <dfn>FormData</dfn> {
-  void <a lt="dom FormData append">append</a>(USVString <var>name</var>, USVString <var>value</var>);
-  void <a lt="dom FormData append">append</a>(USVString <var>name</var>, <a>Blob</a> <var>value</var>, optional USVString <var>filename</var>);
-  void <a lt="dom FormData delete">delete</a>(USVString <var>name</var>);
-  <a>FormDataEntryValue</a>? <a lt="dom FormData get">get</a>(USVString <var>name</var>);
-  sequence&lt;<a>FormDataEntryValue</a>> <a lt="dom FormData getAll">getAll</a>(USVString <var>name</var>);
-  boolean <a lt="dom FormData has">has</a>(USVString <var>name</var>);
-  void <a lt="dom FormData append">set</a>(USVString <var>name</var>, USVString <var>value</var>);
-  void <a lt="dom FormData append">set</a>(USVString <var>name</var>, <a>Blob</a> <var>value</var>, optional USVString <var>filename</var>);
-  iterable&lt;USVString, <a>FormDataEntryValue</a>>;
+interface FormData {
+  void append(USVString name, USVString value);
+  void append(USVString name, Blob value, optional USVString filename);
+  void delete(USVString name);
+  FormDataEntryValue? get(USVString name);
+  sequence&lt;FormDataEntryValue> getAll(USVString name);
+  boolean has(USVString name);
+  void set(USVString name, USVString value);
+  void set(USVString name, Blob value, optional USVString filename);
+  iterable&lt;USVString, FormDataEntryValue>;
 };</pre>
 
 <p>The <code>FormData</code> object represents an ordered list of
@@ -1957,7 +1933,7 @@ value of <a>entry</a>'s
 <hr>
 
 <p>The
-<dfn lt="dom FormData"><code>FormData(<var>form</var>)</code></dfn>
+<dfn id=dom-formdata constructor for=FormData><code>FormData(<var>form</var>)</code></dfn>
 constructor must run these steps:
 
 <ol>
@@ -1971,7 +1947,7 @@ constructor must run these steps:
 </ol>
 
 <p>The
-<dfn id=dom-formdata-append lt="dom FormData append"><code>append(<var>name</var>, <var>value</var>, <var>filename</var>)</code></dfn>
+<dfn id=dom-formdata-append method for=FormData><code>append(<var>name</var>, <var>value</var>, <var>filename</var>)</code></dfn>
 method, when invoked, must run these steps:
 
 <ol>
@@ -1983,29 +1959,29 @@ method, when invoked, must run these steps:
 </ol>
 
 <p>The
-<dfn lt="dom FormData delete"><code>delete(<var>name</var>)</code></dfn>
+<dfn id=dom-formdata-delete method for=FormData><code>delete(<var>name</var>)</code></dfn>
 method, when invoked, must remove all <a>entries</a>
 whose <a>name</a> is <var>name</var>.
 
-<p>The <dfn lt="dom FormData get"><code>get(<var>name</var>)</code></dfn> method, when
+<p>The <dfn id=dom-formdata-get method for=FormData><code>get(<var>name</var>)</code></dfn> method, when
 invoked, must return the <a>value</a> of the first
 <a>entry</a> whose
 <a>name</a> is <var>name</var>, and null
 otherwise.
 
-<p>The <dfn lt="dom FormData getAll"><code>getAll(<var>name</var>)</code></dfn> method,
+<p>The <dfn id=dom-formdata-getall method for=FormData><code>getAll(<var>name</var>)</code></dfn> method,
 when invoked, must return the <a>values</a> of
 all <a>entries</a> whose
 <a>name</a> is <var>name</var>, in list order, and
 the empty sequence otherwise.
 
-<p>The <dfn lt="dom FormData has"><code>has(<var>name</var>)</code></dfn> method, when
+<p>The <dfn id=dom-formdata-has method for=FormData><code>has(<var>name</var>)</code></dfn> method, when
 invoked, must return true if there is an <a>entry</a>
 whose <a>name</a> is <var>name</var>, and false
 otherwise.
 
 <p>The
-<dfn lt="dom FormData set"><code>set(<var>name</var>, <var>value</var>, <var>filename</var>)</code></dfn>
+<dfn id=dom-formdata-set method for=FormData><code>set(<var>name</var>, <var>value</var>, <var>filename</var>)</code></dfn>
 method, when invoked, must run these steps:
 
 <ol>
@@ -2028,31 +2004,28 @@ method, when invoked, must run these steps:
 <a>value</a>.
 
 
-
 <h2 id=interface-progressevent>Interface <code>ProgressEvent</code></h2>
 
-<pre class=idl>[<a>Constructor</a>(DOMString <var>type</var>, optional <a>ProgressEventInit</a> <var>eventInitDict</var>),
+<pre class=idl>[Constructor(DOMString type, optional ProgressEventInit eventInitDict),
  Exposed=(Window,DedicatedWorker,SharedWorker)]
-interface <dfn>ProgressEvent</dfn> : <a>Event</a> {
-  readonly attribute boolean <a lt="dom ProgressEvent lengthComputable">lengthComputable</a>;
-  readonly attribute unsigned long long <a lt="dom ProgressEvent loaded">loaded</a>;
-  readonly attribute unsigned long long <a lt="dom ProgressEvent total">total</a>;
+interface ProgressEvent : Event {
+  readonly attribute boolean lengthComputable;
+  readonly attribute unsigned long long loaded;
+  readonly attribute unsigned long long total;
 };
 
-dictionary <dfn>ProgressEventInit</dfn> : <a>EventInit</a> {
-  boolean <a lt="dom ProgressEventInit lengthComputable">lengthComputable</a> = false;
-  unsigned long long <a lt="dom ProgressEventInit loaded">loaded</a> = 0;
-  unsigned long long <a lt="dom ProgressEventInit total">total</a> = 0;
+dictionary ProgressEventInit : EventInit {
+  boolean lengthComputable = false;
+  unsigned long long loaded = 0;
+  unsigned long long total = 0;
 };</pre>
 
-<p><a>Events</a> using
-the <code>ProgressEvent</code> interface indicate some kind of
-progression.
+<p><a>Events</a> using the <code>ProgressEvent</code> interface indicate some kind of progression.
 
 <p>The
-<dfn id=dom-progressevent-lengthcomputable lt="dom ProgressEvent lengthComputable"><code>lengthComputable</code></dfn>,
-<dfn id=dom-progressevent-loaded lt="dom ProgressEvent loaded"><code>loaded</code></dfn>, and
-<dfn id=dom-progressevent-total lt="dom ProgressEvent total"><code>total</code></dfn>
+<dfn id=dom-progressevent-lengthcomputable attribute for=ProgressEvent><code>lengthComputable</code></dfn>,
+<dfn id=dom-progressevent-loaded attribute for=ProgressEvent><code>loaded</code></dfn>, and
+<dfn id=dom-progressevent-total attribute for=ProgressEvent><code>total</code></dfn>
 attributes must return the value they were initialized to.
 
 
@@ -2188,10 +2161,7 @@ otherwise. [[!FETCH]]
 </div>
 
 
-
-<h2 class=no-num>References</h2>
-<div id=anolis-references></div>
-
+<div data-fill-with=references></div>
 
 
 <h2 class=no-num id=acknowledgments>Acknowledgments</h2>
