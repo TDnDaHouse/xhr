@@ -250,12 +250,12 @@ Unless stated otherwise it is unset.
 <h3 id=constructors>Constructors</h3>
 
 <dl class=domintro>
- <dt><code><var>client</var> = new <a lt="dom XMLHttpRequest">XMLHttpRequest</a>()</code>
+ <dt><code><var>client</var> = new <a constructor for=XMLHttpRequest>XMLHttpRequest()</a></code>
  <dd>Returns a new {{XMLHttpRequest}} object.
 </dl>
 
-<p>The <dfn lt="dom XMLHttpRequest"><code>XMLHttpRequest()</code></dfn> constructor, when
-invoked, must return a new {{XMLHttpRequest}} object.
+<p>The <dfn id=dom-xmlhttprequest constructor for=XMLHttpRequest><code>XMLHttpRequest()</code></dfn>
+constructor, when invoked, must return a new {{XMLHttpRequest}} object.
 
 
 <h3 id=garbage-collection>Garbage collection</h3>
@@ -339,16 +339,15 @@ supported as attribute solely by the
 <h3 id=states>States</h3>
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest readyState">readyState</a></code>
+ <dt><code><var>client</var> . <a attribute for=XMLHttpRequest>readyState</a></code>
  <dd><p>Returns <var>client</var>'s
  <a>state</a>.
 </dl>
 
-<p>The <dfn lt="dom XMLHttpRequest readyState"><code>readyState</code></dfn>
-attribute's getter must return the value from the table below in the cell of the second
-column, from the row where the value in the cell in the first column is
-<a>context object</a>'s
-<a>state</a>:
+<p>The
+<dfn id=dom-xmlhttprequest-readystate attribute for=XMLHttpRequest><code>readyState</code></dfn>
+attribute's getter must return the value from the table below in the cell of the second column, from
+the row where the value in the cell in the first column is <a>context object</a>'s <a>state</a>:
 
 <table>
  <tbody><tr>
@@ -415,7 +414,7 @@ request-associated concepts:
 <h4 id=the-open()-method>The <code>open()</code> method</h4>
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest open">open</a>(<var>method</var>, <var>url</var> [, <var>async</var> = true [, <var>username</var> = null [, <var>password</var> = null]]])</code>
+ <dt><code><var>client</var> . <a method for=XMLHttpRequest>open(<var>method</var>, <var>url</var> [, <var>async</var> = true [, <var>username</var> = null [, <var>password</var> = null]]])</a></code>
 
  <dd>
   <p>Sets the <a>request method</a>, <a>request URL</a>, and
@@ -550,7 +549,7 @@ method, when invoked, must run these steps:
 <h4 id=the-setrequestheader()-method>The <code>setRequestHeader()</code> method</h4>
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest setRequestHeader">setRequestHeader</a>(<var>name</var>, <var>value</var>)</code>
+ <dt><code><var>client</var> . <a method for=XMLHttpRequest>setRequestHeader(<var>name</var>, <var>value</var>)</a></code>
 
  <dd>
   <p>Combines a <a>header</a> in
@@ -572,7 +571,7 @@ the author as indicated at the end of the
 <a><code>send()</code></a> method section.
 
 <p>The
-<dfn id=dom-xmlhttprequest-setrequestheader lt="dom XMLHttpRequest setRequestHeader"><code>setRequestHeader(<var>name</var>, <var>value</var>)</code></dfn>
+<dfn id=dom-xmlhttprequest-setrequestheader method for=XMLHttpRequest><code>setRequestHeader(<var>name</var>, <var>value</var>)</code></dfn>
 method must run these steps:
 
 <ol>
@@ -645,11 +644,10 @@ X-Test: one, two</code></pre>
 
 </dl>
 
-<p>The
-<dfn id=dom-xmlhttprequest-timeout lt="dom XMLHttpRequest timeout"><code>timeout</code></dfn>
+<p>The <dfn id=dom-xmlhttprequest-timeout attribute for=XMLHttpRequest><code>timeout</code></dfn>
 attribute must return its value. Initially its value must be zero.
 
-<p>Setting the <a><code>timeout</code></a>
+<p>Setting the {{XMLHttpRequest/timeout}}
 attribute must run these steps:
 
 <ol>
