@@ -413,7 +413,7 @@ request-associated concepts:
 <hr>
 
 <p>To <dfn>terminate the request</dfn>,
-<a for=/>terminate</a> the
+<a for=fetch>terminate</a> the
 <a for=/>fetch</a> algorithm operated by the
 {{XMLHttpRequest}} object with reason <i>fatal</i>.
 
@@ -906,7 +906,7 @@ method must run these steps:
        <li><p>If <var>milliseconds</var> is equal or greater than
        the {{XMLHttpRequest/timeout}} attribute value and
        the {{XMLHttpRequest/timeout}} attribute value is not
-       zero, <a for=/>terminate</a>
+       zero, <a for=fetch>terminate</a>
        <a for=/>fetching</a> with reason
        <i>timeout</i>.
       </ol>
@@ -1056,7 +1056,7 @@ method must run these steps:
     <a for=/>fetching</a> <var>req</var>.
 
     <p>If the {{XMLHttpRequest/timeout}} attribute value is not
-    zero, <a for=/>terminate</a> this
+    zero, <a for=fetch>terminate</a> this
     <a for=/>fetch</a> if it has not returned
     within the amount of milliseconds from the
     {{XMLHttpRequest/timeout}} attribute value with reason
