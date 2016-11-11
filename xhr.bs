@@ -270,13 +270,13 @@ constructor, when invoked, must return a new {{XMLHttpRequest}} object.
 <i>headers received</i>, or <i>loading</i>, and it has one or more
 <a>event listeners</a>
 registered whose <b>type</b> is one of
-<a><code>readystatechange</code></a>,
-<a><code>progress</code></a>,
-<a><code>abort</code></a>,
-<a><code>error</code></a>,
-<a><code>load</code></a>,
-<a><code>timeout</code></a>, and
-<a><code>loadend</code></a>.
+<a event><code>readystatechange</code></a>,
+<a event><code>progress</code></a>,
+<a event><code>abort</code></a>,
+<a event><code>error</code></a>,
+<a event><code>load</code></a>,
+<a event><code>timeout</code></a>, and
+<a event><code>loadend</code></a>.
 <!-- No need to mention upload event listeners as they happen during /opened/. -->
 
 <p>If an {{XMLHttpRequest}} object is garbage collected while its
@@ -299,25 +299,25 @@ from <code>XMLHttpRequestEventTarget</code> as attributes:
  <tbody>
   <tr>
    <td><dfn lt="handler xhr onloadstart"><code>onloadstart</code></dfn>
-   <td><a><code>loadstart</code></a>
+   <td><a event><code>loadstart</code></a>
   <tr>
    <td><dfn lt="handler xhr onprogress"><code>onprogress</code></dfn>
-   <td><a><code>progress</code></a>
+   <td><a event><code>progress</code></a>
   <tr>
    <td><dfn lt="handler xhr onabort"><code>onabort</code></dfn>
-   <td><a><code>abort</code></a>
+   <td><a event><code>abort</code></a>
   <tr>
    <td><dfn lt="handler xhr onerror"><code>onerror</code></dfn>
-   <td><a><code>error</code></a>
+   <td><a event><code>error</code></a>
   <tr>
    <td><dfn lt="handler xhr onload"><code>onload</code></dfn>
-   <td><a><code>load</code></a>
+   <td><a event><code>load</code></a>
   <tr>
    <td><dfn lt="handler xhr ontimeout"><code>ontimeout</code></dfn>
-   <td><a><code>timeout</code></a>
+   <td><a event><code>timeout</code></a>
   <tr>
    <td><dfn lt="handler xhr onloadend"><code>onloadend</code></dfn>
-   <td><a><code>loadend</code></a>
+   <td><a event><code>loadend</code></a>
 </table>
 
 <p>The following is the
@@ -335,7 +335,7 @@ supported as attribute solely by the
  <tbody>
   <tr>
    <td><dfn lt="handler xhr onreadystatechange"><code>onreadystatechange</code></dfn>
-   <td><a><code>readystatechange</code></a>
+   <td><a event><code>readystatechange</code></a>
 </table>
 
 
@@ -433,7 +433,7 @@ request-associated concepts:
 
   <p>Throws an <code>InvalidAccessError</code> exception if <var>async</var> is false,
   <a>entry global object</a> is a <code>Window</code>
-  object, and the <a><code>timeout</code></a> attribute is not zero or the
+  object, and the {{XMLHttpRequest/timeout}} attribute is not zero or the
   {{XMLHttpRequest/responseType}} attribute is not the empty string.
 </dl>
 
@@ -501,7 +501,7 @@ method, when invoked, must run these steps:
   </ol>
 
  <li><p>If <var>async</var> is false, <a>entry global object</a> is a <code>Window</code>
- object, and the <a><code>timeout</code></a> attribute value is not zero
+ object, and the {{XMLHttpRequest/timeout}} attribute value is not zero
  or the {{XMLHttpRequest/responseType}} attribute value is not the
  empty string, then <a>throw</a> an
  <code>InvalidAccessError</code> exception.
@@ -540,7 +540,7 @@ method, when invoked, must run these steps:
    <li><p>Set <a>state</a> to
    <i>opened</i>.
 
-   <li><p><a>Fire an event</a> named <a><code>readystatechange</code></a>.
+   <li><p><a>Fire an event</a> named <a event><code>readystatechange</code></a>.
   </ol>
 </ol>
 
@@ -630,7 +630,7 @@ X-Test: one, two</code></pre>
   will cause <a for=/>fetching</a> to
   terminate after the given time has passed. When the time has passed, the request has
   not yet completed, and the <a>synchronous flag</a> is unset, a
-  <a><code>timeout</code></a> event will then be
+  <a event><code>timeout</code></a> event will then be
   <a>dispatched</a>,
   or a <code>TimeoutError</code> exception will be
   <a lt=throw>thrown</a> otherwise
@@ -643,7 +643,7 @@ X-Test: one, two</code></pre>
 
 </dl>
 
-<p>The <dfn id=dom-xmlhttprequest-timeout attribute for=XMLHttpRequest><code>timeout</code></dfn>
+<p>The <dfn attribute for=XMLHttpRequest><code>timeout</code></dfn>
 attribute must return its value. Initially its value must be zero.
 
 <p>Setting the {{XMLHttpRequest/timeout}}
@@ -659,7 +659,7 @@ attribute must run these steps:
 </ol>
 
 <p class=note>This implies that the
-<a><code>timeout</code></a> attribute can be
+{{XMLHttpRequest/timeout}} attribute can be
 set while <a for=/>fetching</a> is in
 progress. If that occurs it will still be measured relative to the start
 of <a for=/>fetching</a>.
@@ -871,11 +871,11 @@ method must run these steps:
   <p>If the <a>synchronous flag</a> is unset, run these substeps:
 
   <ol>
-   <li><p><a>Fire a progress event</a> named <a><code>loadstart</code></a> with 0 and 0.
+   <li><p><a>Fire a progress event</a> named <a event><code>loadstart</code></a> with 0 and 0.
 
    <li><p>If the <a>upload complete flag</a> is unset and <a>upload listener flag</a> is
    set, then <a>fire a progress event</a> named
-   <a><code>loadstart</code></a> on the
+   <a event><code>loadstart</code></a> on the
    <code>XMLHttpRequestUpload</code> object with 0 and <var>req</var>'s
    <a for=request>body</a>'s
    <a>total bytes</a>.
@@ -899,8 +899,8 @@ method must run these steps:
        <li><p>Increase <var>milliseconds</var> by one.
 
        <li><p>If <var>milliseconds</var> is equal or greater than
-       the <a><code>timeout</code></a> attribute value and
-       the <a><code>timeout</code></a> attribute value is not
+       the {{XMLHttpRequest/timeout}} attribute value and
+       the {{XMLHttpRequest/timeout}} attribute value is not
        zero, <a for=/>terminate</a>
        <a for=/>fetching</a> with reason
        <i>timeout</i>.
@@ -916,7 +916,7 @@ method must run these steps:
 
      <li><p>If <a>upload listener flag</a> is set, then
      <a>fire a progress event</a> named
-     <a><code>progress</code></a> on the
+     <a event><code>progress</code></a> on the
      <code>XMLHttpRequestUpload</code> object with <var>request</var>'s
      <a for=request>body</a>'s
      <a>transmitted bytes</a> and
@@ -945,17 +945,17 @@ method must run these steps:
      <a>total bytes</a>.
 
      <li><p><a>Fire a progress event</a> named
-     <a><code>progress</code></a> on the
+     <a event><code>progress</code></a> on the
      <code>XMLHttpRequestUpload</code> object with <var>transmitted</var> and
      <var>length</var>.
 
      <li><p><a>Fire a progress event</a> named
-     <a><code>load</code></a> on the
+     <a event><code>load</code></a> on the
      <code>XMLHttpRequestUpload</code> object with <var>transmitted</var> and
      <var>length</var>.
 
      <li><p><a>Fire a progress event</a> named
-     <a><code>loadend</code></a> on the
+     <a event><code>loadend</code></a> on the
      <code>XMLHttpRequestUpload</code> object with <var>transmitted</var> and
      <var>length</var>.
     </ol>
@@ -980,7 +980,7 @@ method must run these steps:
      <i>headers received</i>.
 
      <li><p><a>Fire an event</a> named
-     <a><code>readystatechange</code></a>.
+     <a event><code>readystatechange</code></a>.
 
      <li><p>If <a>state</a> is not
      <i>headers received</i>, then return.
@@ -1020,14 +1020,14 @@ method must run these steps:
 
        <li>
         <p><a>Fire an event</a> named
-        <a><code>readystatechange</code></a>.
+        <a event><code>readystatechange</code></a>.
 
         <p class="note no-backref">Web compatibility is the reason
-        <a><code>readystatechange</code></a> fires more often than
+        <a event><code>readystatechange</code></a> fires more often than
         <a>state</a> changes.
 
        <li><p><a>Fire a progress event</a> named
-       <a><code>progress</code></a> with <var>response</var>'s
+       <a event><code>progress</code></a> with <var>response</var>'s
        <a for=response>body</a>'s
        <a>transmitted bytes</a> and
        <var>response</var>'s <a for=response>body</a>'s
@@ -1050,11 +1050,11 @@ method must run these steps:
     <p>Let <var>response</var> be the result of
     <a for=/>fetching</a> <var>req</var>.
 
-    <p>If the <a><code>timeout</code></a> attribute value is not
+    <p>If the {{XMLHttpRequest/timeout}} attribute value is not
     zero, <a for=/>terminate</a> this
     <a for=/>fetch</a> if it has not returned
     within the amount of milliseconds from the
-    <a><code>timeout</code></a> attribute value with reason
+    {{XMLHttpRequest/timeout}} attribute value with reason
     <i>timeout</i>.
 
    <li><p>If <var>response</var>'s
@@ -1099,13 +1099,13 @@ method must run these steps:
  <var>response</var>.
 
  <li><p><a>Fire a progress event</a> named
- <a><code>progress</code></a> with <var>transmitted</var> and <var>length</var>.
+ <a event><code>progress</code></a> with <var>transmitted</var> and <var>length</var>.
 
  <li><p>Set <a>state</a> to <i>done</i>.
 
  <li><p>Unset the <a><code>send()</code> flag</a>.
 
- <li><p><a>Fire an event</a> named <a><code>readystatechange</code></a>.
+ <li><p><a>Fire an event</a> named <a event><code>readystatechange</code></a>.
 
  <li><p>Let <var>transmitted</var> be <var>response</var>'s
  <a for=response>body</a>'s
@@ -1115,10 +1115,10 @@ method must run these steps:
  <a for=response>body</a>'s
  <a>total bytes</a>.
 
- <li><p><a>Fire a progress event</a> named <a><code>load</code></a>
+ <li><p><a>Fire a progress event</a> named <a event><code>load</code></a>
  with <var>transmitted</var> and <var>length</var>.
 
- <li><p><a>Fire a progress event</a> named <a><code>loadend</code></a>
+ <li><p><a>Fire a progress event</a> named <a event><code>loadend</code></a>
  with <var>transmitted</var> and <var>length</var>.
 </ol>
 
@@ -1129,7 +1129,7 @@ method must run these steps:
 
  <li><p>If <var>response</var> is a
  <a>network error</a>, run the
- <a>request error steps</a> for event <a><code>error</code></a> and
+ <a>request error steps</a> for event <a event><code>error</code></a> and
  exception <code>NetworkError</code>.
 
  <li>
@@ -1139,7 +1139,7 @@ method must run these steps:
   <dl class=switch>
    <dt><i>end-user abort</i>
    <dd><p>Run the <a>request error steps</a> for event
-   <a><code>abort</code></a> and exception
+   <a event><code>abort</code></a> and exception
    <code>AbortError</code>.
 
    <dt><i>fatal</i>
@@ -1156,7 +1156,7 @@ method must run these steps:
 
    <dt><i>timeout</i>
    <dd><p>Run the <a>request error steps</a> for event
-   <a><code>timeout</code></a> and exception
+   <a event><code>timeout</code></a> and exception
    <code>TimeoutError</code>.
   </dl>
 </ol>
@@ -1177,7 +1177,7 @@ exception <var>exception</var> are:
  exception.
 
  <li>
-  <p><a>Fire an event</a> named <a><code>readystatechange</code></a>.
+  <p><a>Fire an event</a> named <a event><code>readystatechange</code></a>.
 
   <p class=note>At this point it is clear that the <a>synchronous flag</a> is unset.
 
@@ -1193,7 +1193,7 @@ exception <var>exception</var> are:
    <var>event</var> on the <code>XMLHttpRequestUpload</code> object with 0 and 0.
 
    <li><p><a>Fire a progress event</a> named
-   <a><code>loadend</code></a> on the <code>XMLHttpRequestUpload</code>
+   <a event><code>loadend</code></a> on the <code>XMLHttpRequestUpload</code>
    object with 0 and 0.
   </ol>
 
@@ -1201,7 +1201,7 @@ exception <var>exception</var> are:
  <var>event</var> with 0 and 0.
 
  <li><p><a>Fire a progress event</a> named
- <a><code>loadend</code></a> with 0 and 0.
+ <a event><code>loadend</code></a> with 0 and 0.
 </ol>
 
 
@@ -1221,13 +1221,13 @@ when invoked, must run these steps:
  <li><p>If <a>state</a> is either
  <i>opened</i> with the <a><code>send()</code> flag</a> set,
  <i>headers received</i>, or <i>loading</i>, run the
- <a>request error steps</a> for event <a><code>abort</code></a>.
+ <a>request error steps</a> for event <a event><code>abort</code></a>.
 
  <li>
   <p>If <a>state</a> is <i>done</i>, set
   <a>state</a> to <i>unsent</i>.
 
-  <p class=note>No <a><code>readystatechange</code></a> event
+  <p class=note>No <a event><code>readystatechange</code></a> event
   is dispatched.
 </ol>
 
@@ -1827,37 +1827,37 @@ and/or <code>XMLHttpRequestUpload</code> objects:
    <th>Dispatched when…
  <tbody>
   <tr>
-   <td><dfn lt="event xhr readystatechange"><code>readystatechange</code></dfn>
+   <td><dfn id=event-xhr-readystatechange event for=XMLHttpRequest><code>readystatechange</code></dfn>
    <td><code>Event</code>
    <td>The {{XMLHttpRequest/readyState}} attribute changes
    value, except when it changes to <a const for=XMLHttpRequest>UNSENT</a>.
   <tr>
-   <td><dfn lt="event xhr loadstart"><code>loadstart</code></dfn>
+   <td><dfn id=event-xhr-loadstart event for=XMLHttpRequest><code>loadstart</code></dfn>
    <td>{{ProgressEvent}}
    <td>The fetch initiates.
   <tr>
-   <td><dfn lt="event xhr progress"><code>progress</code></dfn>
+   <td><dfn id=event-xhr-progress event for=XMLHttpRequest><code>progress</code></dfn>
    <td>{{ProgressEvent}}
    <td>Transmitting data.
   <tr>
-   <td><dfn lt="event xhr abort"><code>abort</code></dfn>
+   <td><dfn id=event-xhr-abort event for=XMLHttpRequest><code>abort</code></dfn>
    <td>{{ProgressEvent}}
    <td>When the fetch has been aborted. For instance, by invoking the
    {{XMLHttpRequest/abort()}} method.
   <tr>
-   <td><dfn lt="event xhr error"><code>error</code></dfn>
+   <td><dfn id=event-xhr-error event for=XMLHttpRequest><code>error</code></dfn>
    <td>{{ProgressEvent}}
    <td>The fetch failed.
   <tr>
-   <td><dfn lt="event xhr load"><code>load</code></dfn>
+   <td><dfn id=event-xhr-load event for=XMLHttpRequest><code>load</code></dfn>
    <td>{{ProgressEvent}}
    <td>The fetch succeeded.
   <tr>
-   <td><dfn lt="event xhr timeout"><code>timeout</code></dfn>
+   <td><dfn id=event-xhr-timeout event for=XMLHttpRequest><code>timeout</code></dfn>
    <td>{{ProgressEvent}}
    <td>The author specified timeout has passed before the fetch completed.
   <tr>
-   <td><dfn lt="event xhr loadend"><code>loadend</code></dfn>
+   <td><dfn id=event-xhr-loadend event for=XMLHttpRequest><code>loadend</code></dfn>
    <td>{{ProgressEvent}}
    <td>The fetch completed (success or failure).
 </table>
@@ -2061,7 +2061,7 @@ WHATWG community to ensure input from people familiar with the subject.
    <td>Once.
    <td>First.
   <tr>
-   <th><code>progress</code>
+   <th><a event><code>progress</code></a>
    <td>In progress.
    <td>Once or more.
    <td>After <code>loadstart</code> has been
@@ -2070,7 +2070,7 @@ WHATWG community to ensure input from people familiar with the subject.
    <th><code>error</code>
    <td>Progression failed.
    <td rowspan=4>Zero or once (mutually exclusive).
-   <td rowspan=4>After the last <code>progress</code> has
+   <td rowspan=4>After the last <a event><code>progress</code></a> has
     been
     <a>dispatched</a>.
   <tr>
@@ -2118,7 +2118,7 @@ otherwise. [[!FETCH]]
 <div id=example-progress-events class=example>
  <p>In this example {{XMLHttpRequest}}, combined with concepts
  defined in the sections before, and the HTML
- <code>progress</code> element are used together to
+ <a event><code>progress</code></a> element are used together to
  display the process of
  <a for=/>fetching</a> a resource.
 
