@@ -14,11 +14,16 @@ Boilerplate: omit feedback-header, omit conformance, omit index, omit idl-index
 !Commits: <a href=https://twitter.com/fullscreenapi>@fullscreenapi</a>
 !Tests: <a href=https://w3c-test.org/XMLHttpRequest/>XMLHttpRequest tests</a> are hosted in the <a href="https://github.com/w3c/web-platform-tests/">W3C Web platform testsuite</a> &mdash; contributions welcome!
 !Translation (non-normative): <span title=Japanese><a href=https://triple-underscore.github.io/XHR-ja.html lang=ja hreflang=ja rel=alternate>日本語</a></span>
+Translate IDs: dictdef-progresseventinit progresseventinit
 </pre>
 
 <script src=https://resources.whatwg.org/file-issue.js async></script>
 <script src=annotate_spec.js async></script>
 <script src=https://resources.whatwg.org/dfn.js defer></script>
+
+<pre class=link-defaults>
+spec:dom; type:interface; text:Document
+</pre>
 
 <pre class=biblio>
 {
@@ -38,11 +43,9 @@ Boilerplate: omit feedback-header, omit conformance, omit index, omit idl-index
 
 <p><em>This section is non-normative.</em>
 
-<p>The {{XMLHttpRequest}} object is an API for
-<a>fetching</a> resources.
+<p>The {{XMLHttpRequest}} object is an API for <a for=/>fetching</a> resources.
 
-<p>The name {{XMLHttpRequest}} is historical and has no bearing on its
-functionality.
+<p>The name {{XMLHttpRequest}} is historical and has no bearing on its functionality.
 
 <div id=example-xhr class=example>
  <p>Some simple code to do something with data from an XML document
@@ -372,7 +375,7 @@ the row where the value in the cell in the first column is <a>context object</a>
   <td><i>loading</i>
   <td><dfn const for=XMLHttpRequest><code>LOADING</code></dfn> (numeric value 3)
   <td>The <a>response</a>'s
-  <a>body</a> is being received.
+  <a for=response>body</a> is being received.
  <tr>
   <td><i>done</i>
   <td><dfn const for=XMLHttpRequest><code>DONE</code></dfn> (numeric value 4)
@@ -395,7 +398,7 @@ request-associated concepts:
 <dfn>upload listener flag</dfn>.
 
 <p>The <a>author request headers</a> is an initially empty
-<a>header list</a>.
+<a for=/>header list</a>.
 
 <p>The <a>request body</a> is initially null.
 
@@ -405,8 +408,8 @@ request-associated concepts:
 <hr>
 
 <p>To <dfn>terminate the request</dfn>,
-<a>terminate</a> the
-<a>fetch</a> algorithm operated by the
+<a for=/>terminate</a> the
+<a for=/>fetch</a> algorithm operated by the
 {{XMLHttpRequest}} object with reason <i>fatal</i>.
 
 
@@ -429,18 +432,16 @@ request-associated concepts:
   `<code>CONNECT</code>`, `<code>TRACE</code>` or `<code>TRACK</code>`.
 
   <p>Throws an <code>InvalidAccessError</code> exception if <var>async</var> is false,
-  <a>entry settings object</a>'s
-  <a>global object</a> is a <code>Window</code>
+  <a>entry global object</a> is a <code>Window</code>
   object, and the <a><code>timeout</code></a> attribute is not zero or the
-  <a><code>responseType</code></a> attribute is not the empty string.
+  {{XMLHttpRequest/responseType}} attribute is not the empty string.
 </dl>
 
 <p class="critical no-backref" id=sync-warning>Synchronous {{XMLHttpRequest}}
 outside of workers is in the process of being removed from the web platform as it has
 detrimental effects to the end user's experience. (This is a long process that takes many
 years.) Developers must not pass false for the <var>async</var> argument when
-<a>entry settings object</a>'s
-<a>global object</a> is a <code>Window</code>
+<a>entry global object</a> is a <code>Window</code>
 object. User agents are strongly encouraged to warn about such usage in developer tools and may
 experiment with <a lt=throw>throwing</a> an
 <code>InvalidAccessError</code> exception when it occurs.
@@ -457,7 +458,7 @@ method, when invoked, must run these steps:
  <a>throw</a> an <code>InvalidStateError</code> exception.
 
  <li><p>If <var>method</var> is not a
- <a>method</a>,
+ <a for=/>method</a>,
  <a>throw</a> a
  <code>SyntaxError</code> exception.
 
@@ -465,11 +466,11 @@ method, when invoked, must run these steps:
  <a>throw</a> a
  <code>SecurityError</code> exception.
 
- <li><p><a>Normalize</a>
+ <li><p><a for=method>Normalize</a>
  <var>method</var>.
 
  <li><p>Let <var>parsedURL</var> be the result of
- <a>parsing</a> <var>url</var> with
+ <a lt="URL parser">parsing</a> <var>url</var> with
  <a>context object</a>'s
  <a>relevant settings object</a>'s
  <a>API base URL</a>.
@@ -486,7 +487,7 @@ method, when invoked, must run these steps:
   argument being <code>undefined</code> identical from it being omitted.
 
  <li>
-  <p>If <var>parsedURL</var>'s <a>host</a>
+  <p>If <var>parsedURL</var>'s <a for=url>host</a>
   is non-null, run these substeps:
 
   <ol>
@@ -499,17 +500,16 @@ method, when invoked, must run these steps:
    <var>password</var>.
   </ol>
 
- <li><p>If <var>async</var> is false, <a>entry settings object</a>'s
- <a>global object</a> is a <code>Window</code>
+ <li><p>If <var>async</var> is false, <a>entry global object</a> is a <code>Window</code>
  object, and the <a><code>timeout</code></a> attribute value is not zero
- or the <a><code>responseType</code></a> attribute value is not the
+ or the {{XMLHttpRequest/responseType}} attribute value is not the
  empty string, then <a>throw</a> an
  <code>InvalidAccessError</code> exception.
 
  <li>
   <p><a>Terminate the request</a>.
 
-  <p class=note>A <a>fetch</a> can be
+  <p class=note>A <a for=/>fetch</a> can be
   ongoing at this point.
 
  <li>
@@ -583,7 +583,7 @@ method must run these steps:
  <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
- <li><p><a>Normalize</a>
+ <li><p><a for=header>Normalize</a>
  <var>value</var>.
 
  <li>
@@ -627,7 +627,7 @@ X-Test: one, two</code></pre>
  <dt><code><var>client</var> . <a attribute for=XMLHttpRequest>timeout</a></code>
  <dd>
   <p>Can be set to a time in milliseconds. When set to a non-zero value
-  will cause <a>fetching</a> to
+  will cause <a for=/>fetching</a> to
   terminate after the given time has passed. When the time has passed, the request has
   not yet completed, and the <a>synchronous flag</a> is unset, a
   <a><code>timeout</code></a> event will then be
@@ -638,8 +638,7 @@ X-Test: one, two</code></pre>
   <p>When set: throws an
   <code>InvalidAccessError</code> exception if
   the <a>synchronous flag</a> is set and
-  <a>entry settings object</a>'s
-  <a>global object</a> is a <code>Window</code>
+  <a>entry global object</a> is a <code>Window</code>
   object.
 
 </dl>
@@ -651,8 +650,7 @@ attribute must return its value. Initially its value must be zero.
 attribute must run these steps:
 
 <ol>
- <li><p>If <a>entry settings object</a>'s
- <a>global object</a> is a <code>Window</code>
+ <li><p>If <a>entry global object</a> is a <code>Window</code>
  object and the <a>synchronous flag</a> is set,
  <a>throw</a> an
  <code>InvalidAccessError</code> exception.
@@ -662,9 +660,9 @@ attribute must run these steps:
 
 <p class=note>This implies that the
 <a><code>timeout</code></a> attribute can be
-set while <a>fetching</a> is in
+set while <a for=/>fetching</a> is in
 progress. If that occurs it will still be measured relative to the start
-of <a>fetching</a>.
+of <a for=/>fetching</a>.
 
 
 <h4 id=the-withcredentials-attribute>The <code>withCredentials</code> attribute</h4>
@@ -689,7 +687,7 @@ of <a>fetching</a>.
 attribute must return its value. Initially its value must be false.
 
 <p>Setting the
-<a><code>withCredentials</code></a>
+{{XMLHttpRequest/withCredentials}}
 attribute must run these steps:
 
 <ol>
@@ -702,13 +700,13 @@ attribute must run these steps:
  <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
- <li><p>Set the <a><code>withCredentials</code></a>
+ <li><p>Set the {{XMLHttpRequest/withCredentials}}
  attribute's value to the given value.
 </ol>
 
-<p class=note>The <a><code>withCredentials</code></a>
+<p class=note>The {{XMLHttpRequest/withCredentials}}
 attribute has no effect when
-<a>fetching</a>
+<a for=/>fetching</a>
 <a lt="same origin">same-origin</a> resources.
 
 
@@ -779,8 +777,8 @@ method must run these steps:
     <p>Set <a>request body</a> to <var>body</var>,
     <a>serialized</a> with the
     <i>require well-formed flag</i> set,
-    <a lt="convert a DOMString to a sequence of Unicode characters">converted to Unicode</a>,
-    and <a lt="utf 8 encode">utf-8 encoded</a>.
+    <a lt="obtain Unicode">converted to Unicode</a>,
+    and <a lt="UTF-8 encode">utf-8 encoded</a>.
     Rethrow any exceptions.
 
     <p class=note>If <var>body</var> cannot be
@@ -793,8 +791,7 @@ method must run these steps:
     `<code>UTF-8</code>`.
 
     <p>Set <a>request body</a> and <var>Content-Type</var> to the result of
-    <a>extracting</a>
-    <var>body</var>.
+    <a for=BodyInit>extracting</a> <var>body</var>.
   </dl>
 
   <p>If <var>Content-Type</var> is non-null and <a>author request headers</a>
@@ -832,40 +829,40 @@ method must run these steps:
   follows:
 
   <dl>
-   <dt><a>method</a>
+   <dt><a for=request>method</a>
    <dd><a>request method</a>
-   <dt><a>url</a>
+   <dt><a for=request>url</a>
    <dd><a>request URL</a>
-   <dt><a>header list</a>
+   <dt><a for=request>header list</a>
    <dd><a>author request headers</a>
-   <dt><a>unsafe-request flag</a>
+   <dt><a for=request>unsafe-request flag</a>
    <dd>Set.
-   <dt><a>body</a>
+   <dt><a for=request>body</a>
    <dd><a>request body</a>
-   <dt><a>client</a>
+   <dt><a for=request>client</a>
    <dd><a>context object</a>'s
    <a>relevant settings object</a>
-   <dt><a>synchronous flag</a>
+   <dt><a for=request>synchronous flag</a>
    <dd>Set if the <a>synchronous flag</a> is set.
-   <dt><a>mode</a>
+   <dt><a for=request>mode</a>
    <dd>"<code>cors</code>"
-   <dt><a>use-CORS-preflight flag</a>
+   <dt><a for=request>use-CORS-preflight flag</a>
    <dd>Set if <a>upload listener flag</a> is set.
-   <dt><a>credentials mode</a>
-   <dd>If the <a><code>withCredentials</code></a>
+   <dt><a for=request>credentials mode</a>
+   <dd>If the {{XMLHttpRequest/withCredentials}}
    attribute value is true, "<code>include</code>", and "<code>same-origin</code>"
    otherwise.
-   <dt><a>use URL credentials flag</a>
+   <dt><a for=request>use-URL-credentials flag</a>
    <dd>Set if either <a>request URL</a>'s
-   <a>username</a>
+   <a for=url>username</a>
    is not the empty string or <a>request URL</a>'s
-   <a>password</a> is non-null.
+   <a for=url>password</a> is non-null.
   </dl>
 
  <li><p>Unset the <a>upload complete flag</a>.
 
  <li><p>If <var>req</var>'s
- <a>body</a> is null,
+ <a for=request>body</a> is null,
  set the <a>upload complete flag</a>.
 
  <li><p>Set the <a><code>send()</code> flag</a>.
@@ -880,7 +877,7 @@ method must run these steps:
    set, then <a>fire a progress event</a> named
    <a><code>loadstart</code></a> on the
    <code>XMLHttpRequestUpload</code> object with 0 and <var>req</var>'s
-   <a>body</a>'s
+   <a for=request>body</a>'s
    <a>total bytes</a>.
 
    <li>
@@ -904,8 +901,8 @@ method must run these steps:
        <li><p>If <var>milliseconds</var> is equal or greater than
        the <a><code>timeout</code></a> attribute value and
        the <a><code>timeout</code></a> attribute value is not
-       zero, <a>terminate</a>
-       <a>fetching</a> with reason
+       zero, <a for=/>terminate</a>
+       <a for=/>fetching</a> with reason
        <i>timeout</i>.
       </ol>
     </ol>
@@ -921,10 +918,10 @@ method must run these steps:
      <a>fire a progress event</a> named
      <a><code>progress</code></a> on the
      <code>XMLHttpRequestUpload</code> object with <var>request</var>'s
-     <a>body</a>'s
+     <a for=request>body</a>'s
      <a>transmitted bytes</a> and
      <var>request</var>'s
-     <a>body</a>'s
+     <a for=request>body</a>'s
      <a>total bytes</a>.
      <!-- upload complete flag can never be set here I hope -->
     </ol>
@@ -940,11 +937,11 @@ method must run these steps:
      <li><p>If <a>upload listener flag</a> is unset, then terminate these subsubsteps.
 
      <li><p>Let <var>transmitted</var> be <var>request</var>'s
-     <a>body</a>'s
+     <a for=request>body</a>'s
      <a>transmitted bytes</a>.
 
      <li><p>Let <var>length</var> be <var>request</var>'s
-     <a>body</a>'s
+     <a for=request>body</a>'s
      <a>total bytes</a>.
 
      <li><p><a>Fire a progress event</a> named
@@ -989,14 +986,14 @@ method must run these steps:
      <i>headers received</i>, then return.
 
      <li><p>If <var>response</var>'s
-     <a>body</a> is null,
+     <a for=response>body</a> is null,
      then run <a>handle response end-of-body</a> and return.
 
      <li>
       <p>Let <var>reader</var> be the result of
-      <a>getting a reader</a> from
-      <var>response</var>'s <a>body</a>'s
-      <a>stream</a>.
+      <a lt="get a reader" for=ReadableStream>getting a reader</a> from
+      <var>response</var>'s <a for=response>body</a>'s
+      <a for=body>stream</a>.
 
       <p><a class="note no-backref">This operation will not throw an exception.</a>
 
@@ -1004,7 +1001,7 @@ method must run these steps:
       <p>Let <var>read</var> be the result of
       <a>reading a chunk</a>
       from <var>response</var>'s
-      <a>body</a>'s
+      <a for=response>body</a>'s
       <a>stream</a> with <var>reader</var>.
 
       <p>When <var>read</var> is fulfilled with an object whose <code>done</code> property is false
@@ -1031,9 +1028,9 @@ method must run these steps:
 
        <li><p><a>Fire a progress event</a> named
        <a><code>progress</code></a> with <var>response</var>'s
-       <a>body</a>'s
+       <a for=response>body</a>'s
        <a>transmitted bytes</a> and
-       <var>response</var>'s <a>body</a>'s
+       <var>response</var>'s <a for=response>body</a>'s
        <a>total bytes</a>.
       </ol>
 
@@ -1051,31 +1048,31 @@ method must run these steps:
   <ol>
    <li>
     <p>Let <var>response</var> be the result of
-    <a>fetching</a> <var>req</var>.
+    <a for=/>fetching</a> <var>req</var>.
 
     <p>If the <a><code>timeout</code></a> attribute value is not
-    zero, <a>terminate</a> this
-    <a>fetch</a> if it has not returned
+    zero, <a for=/>terminate</a> this
+    <a for=/>fetch</a> if it has not returned
     within the amount of milliseconds from the
     <a><code>timeout</code></a> attribute value with reason
     <i>timeout</i>.
 
    <li><p>If <var>response</var>'s
-   <a>body</a> is null,
+   <a for=response>body</a> is null,
    then run <a>handle response end-of-body</a> and return.
 
    <li>
     <p>Let <var>reader</var> be the result of
-    <a>getting a reader</a> from
-    <var>response</var>'s <a>body</a>'s
-    <a>stream</a>.
+    <a lt="get a reader" for=ReadableStream>getting a reader</a> from
+    <var>response</var>'s <a for=response>body</a>'s
+    <a for=body>stream</a>.
 
     <p><a class="note no-backref">This operation will not throw an exception.</a>
 
    <li><p>Let <var>promise</var> be the result of
    <a>reading all
    bytes</a> from <var>response</var>'s
-   <a>body</a>'s
+   <a for=response>body</a>'s
    <a>stream</a> with <var>reader</var>.
 
    <li><p>Wait for <var>promise</var> to be fulfilled or rejected.
@@ -1100,7 +1097,7 @@ method must run these steps:
  <a>network error</a>, return.
 
  <li><p>If the <a>synchronous flag</a> is unset, update <a>response</a>'s
- <a>body</a> using
+ <a for=response>body</a> using
  <var>response</var>.
 
  <li><p><a>Fire a progress event</a> named
@@ -1113,11 +1110,11 @@ method must run these steps:
  <li><p><a>Fire an event</a> named <a><code>readystatechange</code></a>.
 
  <li><p>Let <var>transmitted</var> be <var>response</var>'s
- <a>body</a>'s
+ <a for=response>body</a>'s
  <a>transmitted bytes</a>.
 
  <li><p>Let <var>length</var> be <var>response</var>'s
- <a>body</a>'s
+ <a for=response>body</a>'s
  <a>total bytes</a>.
 
  <li><p><a>Fire a progress event</a> named <a><code>load</code></a>
@@ -1251,7 +1248,7 @@ sequence). Unless stated otherwise it is the empty byte sequence.
 
 <p>The <dfn attribute for=XMLHttpRequest><code>responseURL</code></dfn> attribute
 must return the empty string if <a>response</a>'s
-<a>url</a> is null and its
+<a for=response>url</a> is null and its
 <a>serialization</a> with the
 <i>exclude fragment flag</i> set otherwise.
 
@@ -1261,7 +1258,7 @@ must return the empty string if <a>response</a>'s
 <p>The
 <dfn attribute for=XMLHttpRequest><code>status</code></dfn>
 attribute must return the <a>response</a>'s
-<a>status</a>.
+<a for=response>status</a>.
 
 
 <h4 id=the-statustext-attribute>The <code>statusText</code> attribute</h4>
@@ -1280,19 +1277,19 @@ method must run these steps:
 
 <ol>
  <li><p>If <a>response</a>'s
- <a>header list</a> has <em>no</em>
+ <a for=response>header list</a> has <em>no</em>
  <a>header</a> whose
- <a>name</a> is <var>name</var>, then return
+ <a for=header>name</a> is <var>name</var>, then return
  null.
 
  <li><p>Return the
  <a>combined value</a> given
  <var>name</var> and <a>response</a>'s
- <a>header list</a>.
+ <a for=response>header list</a>.
 </ol>
 
 <p class="note no-backref">The Fetch Standard filters <a>response</a>'s
-<a>header list</a>.
+<a for=response>header list</a>.
 [[!FETCH]]
 
 <div id=example-getresponseheader class=example>
@@ -1329,7 +1326,7 @@ method, when invoked, must run these steps:
  <li><p>Let <var>headers</var> be the result of running
  <a>sort and combine</a>
  with <a>response</a>'s
- <a>header list</a>.
+ <a for=response>header list</a>.
 
  <li>
   <p>For each <var>header</var> in <var>headers</var>, run these substeps:
@@ -1348,7 +1345,7 @@ method, when invoked, must run these steps:
 </ol>
 
 <p class="note no-backref">The Fetch Standard filters <a>response</a>'s
-<a>header list</a>.
+<a for=response>header list</a>.
 [[!FETCH]]
 
 <div id=example-getresponseheaders class=example>
@@ -1437,8 +1434,8 @@ that is null in which case it is the <a>response charset</a>.
  null, and <a>final MIME type</a> otherwise.
 
  <li><p>Set <a>response <code>Blob</code> object</a> to a new
- <code>Blob</code> object representing <a>received bytes</a> with
- <a><code>type</code></a> <var>type</var> and
+ {{Blob}} object representing <a>received bytes</a> with
+ {{Blob/type}} <var>type</var> and
  return it.
 </ol>
 
@@ -1449,7 +1446,7 @@ that is null in which case it is the <a>response charset</a>.
  <li><p>If <a>response <code>Document</code> object</a> is non-null, return it.
 
  <li><p>If <a>response</a>'s
- <a>body</a> is null, then return null.
+ <a for=response>body</a> is null, then return null.
 
  <li><p>If <a>final MIME type</a> is not null,
  <code>text/html</code>, <code>text/xml</code>,
@@ -1457,12 +1454,12 @@ that is null in which case it is the <a>response charset</a>.
  <code>+xml</code>, return null.
 
  <li>
-  <p>If <a><code>responseType</code></a> is
+  <p>If {{XMLHttpRequest/responseType}} is
   the empty string and <a>final MIME type</a> is
   <code>text/html</code>, return null.
 
   <p class=note>This is restricted to
-  <a><code>responseType</code></a> being
+  {{XMLHttpRequest/responseType}} being
   "<code>document</code>" in order to prevent breaking legacy
   content.
 
@@ -1510,7 +1507,7 @@ that is null in which case it is the <a>response charset</a>.
  <!-- can only happen in the XML case -->
 
  <li><p>Set <var>document</var>'s
- <a>encoding</a> to
+ <a for=Document>encoding</a> to
  <var>charset</var>.
 
  <li><p>Set <var>document</var>'s
@@ -1518,14 +1515,14 @@ that is null in which case it is the <a>response charset</a>.
  to <a>final MIME type</a>.
 
  <li><p>Set <var>document</var>'s
- <a>URL</a> to
+ <a for=Document>URL</a> to
  <a>response</a>'s
- <a>url</a>.
+ <a for=response>url</a>.
 
- <li><p>Set <var>document</var>'s <a>origin</a> to
+ <li><p>Set <var>document</var>'s <a for=Document>origin</a> to
  <a>context object</a>'s
  <a>relevant settings object</a>'s
- <a>origin</a>.
+ <a for="environment settings object">origin</a>.
 
  <li><p>Set <a>response <code>Document</code> object</a> to
  <var>document</var> and return it.
@@ -1538,7 +1535,7 @@ that is null in which case it is the <a>response charset</a>.
  <li><p>If <a>response JSON object</a> is non-null, return it.
 
  <li><p>If <a>response</a>'s
- <a>body</a> is null, then return null.
+ <a for=response>body</a> is null, then return null.
 
  <li><p>Let <var>JSON text</var> be the result of running
  <a>utf-8 decode</a> on <a>received bytes</a>.
@@ -1556,13 +1553,13 @@ that is null in which case it is the <a>response charset</a>.
 
 <ol>
  <li><p>If <a>response</a>'s
- <a>body</a> is null, then return the
+ <a for=response>body</a> is null, then return the
  empty string.
 
  <li><p>Let <var>charset</var> be the <a>final charset</a>.
 
  <li>
-  <p>If <a><code>responseType</code></a> is
+  <p>If {{XMLHttpRequest/responseType}} is
   the empty string, <var>charset</var> is null, and
   <a>final MIME type</a> is either null, <code>text/xml</code>,
   <code>application/xml</code> or ends in <code>+xml</code>, use the
@@ -1571,9 +1568,9 @@ that is null in which case it is the <a>response charset</a>.
   [[!XML]] [[!XMLNS]]
 
   <p class=note>This is restricted to
-  <a><code>responseType</code></a> being
+  {{XMLHttpRequest/responseType}} being
   the empty string to keep the non-legacy
-  <a><code>responseType</code></a> value
+  {{XMLHttpRequest/responseType}} value
   "<code>text</code>" simple.
 
  <li><p>If <var>charset</var> is null, set <var>charset</var> to
@@ -1647,8 +1644,7 @@ method must run these steps:
   "<code>json</code>", and
   "<code>text</code>".
   <p>When set: setting to "<code>document</code>" is ignored if
-  <a>entry settings object</a>'s
-  <a>global object</a> is <em>not</em> a
+  <a>entry global object</a> is <em>not</em> a
   <code>Window</code> object.
   <p>When set: throws an
   <code>InvalidStateError</code> exception if
@@ -1657,8 +1653,7 @@ method must run these steps:
   <p>When set: throws an
   <code>InvalidAccessError</code> exception if the
   <a>synchronous flag</a> is set and
-  <a>entry settings object</a>'s
-  <a>global object</a> is a <code>Window</code>
+  <a>entry global object</a> is a <code>Window</code>
   object.
 </dl>
 
@@ -1669,12 +1664,11 @@ attribute must return its value. Initially its value must be the empty
 string.
 
 <p>Setting the
-<a><code>responseType</code></a>
+{{XMLHttpRequest/responseType}}
 attribute must run these steps:
 
 <ol>
- <li><p>If <a>entry settings object</a>'s
- <a>global object</a> is <em>not</em> a
+ <li><p>If <a>entry global object</a> is <em>not</em> a
  <code>Window</code> object and the given value is
  "<code>document</code>", terminate these steps.
 
@@ -1683,14 +1677,13 @@ attribute must run these steps:
  <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
- <li><p>If <a>entry settings object</a>'s
- <a>global object</a> is a <code>Window</code>
+ <li><p>If <a>entry global object</a> is a <code>Window</code>
  object and the <a>synchronous flag</a> is set,
  <a>throw</a> an
  <code>InvalidAccessError</code> exception.
 
  <li><p>Set the
- <a><code>responseType</code></a>
+ {{XMLHttpRequest/responseType}}
  attribute's value to the given value.
 </ol>
 
@@ -1702,7 +1695,7 @@ attribute must run these steps:
 <dl class=domintro>
  <dt><code><var>client</var> . <a attribute for=XMLHttpRequest>response</a></code>
  <dd><p>Returns the <a>response</a>'s
- <a>body</a>.
+ <a for=response>body</a>.
 </dl>
 
 <p>The
@@ -1711,7 +1704,7 @@ attribute must return the result of running these
 steps:
 
 <dl class=switch>
- <dt>If <a><code>responseType</code></a>
+ <dt>If {{XMLHttpRequest/responseType}}
  is the empty string or "<code>text</code>"
  <dd>
   <ol>
@@ -1730,22 +1723,22 @@ steps:
    <li>
     <dl class=switch>
      <dt>If
-     <a><code>responseType</code></a> is
+     {{XMLHttpRequest/responseType}} is
      "<code>arraybuffer</code>"
      <dd><p>Return the <a>arraybuffer response</a>.
 
      <dt>If
-     <a><code>responseType</code></a> is
+     {{XMLHttpRequest/responseType}} is
      "<code>blob</code>"
      <dd><p>Return the <a>blob response</a>.
 
      <dt>If
-     <a><code>responseType</code></a> is
+     {{XMLHttpRequest/responseType}} is
      "<code>document</code>"
      <dd><p>Return the <a>document response</a>.
 
      <dt>If
-     <a><code>responseType</code></a> is
+     {{XMLHttpRequest/responseType}} is
      "<code>json</code>"
      <dd><p>Return the <a>JSON response</a>.
     </dl>
@@ -1763,7 +1756,7 @@ steps:
 
   <p>Throws an <code>InvalidStateError</code>
   exception if
-  <a><code>responseType</code></a> is not
+  {{XMLHttpRequest/responseType}} is not
   the empty string or "<code>text</code>".
 </dl>
 
@@ -1774,7 +1767,7 @@ steps:
 
 <ol>
 
- <li><p>If <a><code>responseType</code></a> is not the
+ <li><p>If {{XMLHttpRequest/responseType}} is not the
  empty string or "<code>text</code>",
  <a>throw</a> an
  <code>InvalidStateError</code> exception.
@@ -1796,7 +1789,7 @@ steps:
 
   <p>Throws an <code>InvalidStateError</code>
   exception if
-  <a><code>responseType</code></a> is not
+  {{XMLHttpRequest/responseType}} is not
   the empty string or "<code>document</code>".
 </dl>
 
@@ -1806,7 +1799,7 @@ attribute must return the result of running these steps:
 
 <ol>
  <li><p>If
- <a><code>responseType</code></a> is not
+ {{XMLHttpRequest/responseType}} is not
  the empty string or "<code>document</code>",
  <a>throw</a> an
  <code>InvalidStateError</code> exception.
@@ -1852,7 +1845,7 @@ and/or <code>XMLHttpRequestUpload</code> objects:
    <td><dfn lt="event xhr abort"><code>abort</code></dfn>
    <td>{{ProgressEvent}}
    <td>When the fetch has been aborted. For instance, by invoking the
-   <a><code>abort()</code></a> method.
+   {{XMLHttpRequest/abort()}} method.
   <tr>
    <td><dfn lt="event xhr error"><code>error</code></dfn>
    <td>{{ProgressEvent}}
@@ -2029,38 +2022,27 @@ dictionary ProgressEventInit : EventInit {
 <p><a>Events</a> using the {{ProgressEvent}} interface indicate some kind of progression.
 
 <p>The
-<dfn id=dom-progressevent-lengthcomputable attribute for=ProgressEvent><code>lengthComputable</code></dfn>,
-<dfn id=dom-progressevent-loaded attribute for=ProgressEvent><code>loaded</code></dfn>, and
-<dfn id=dom-progressevent-total attribute for=ProgressEvent><code>total</code></dfn>
+<dfn attribute for=ProgressEvent><code>lengthComputable</code></dfn>,
+<dfn attribute for=ProgressEvent><code>loaded</code></dfn>, and
+<dfn attribute for=ProgressEvent><code>total</code></dfn>
 attributes must return the value they were initialized to.
 
 
 <h3 id=firing-events-using-the-progressevent-interface>Firing events using the {{ProgressEvent}} interface</h3>
 
-<p>To
-<dfn>fire a progress event named <var>e</var></dfn>
-given <var>transmitted</var> and <var>length</var>,
-<a>fire an event named <var>e</var></a>
-with an <a>event</a>
-using the {{ProgressEvent}} interface that also meets these
-conditions:
-
-<ul class=brief>
- <li><p>Set the <a><code>loaded</code></a> attribute value to
- <var>transmitted</var>.
-
- <li><p>If <var>length</var> is not 0, set the
- <a><code>lengthComputable</code></a> attribute value to
- true and the <a><code>total</code></a> attribute value to
- <var>length</var>.
-</ul>
+<p>To <dfn>fire a progress event</dfn> named <var>e</var> at <var>target</var>, given
+<var>transmitted</var> and <var>length</var>, means to <a>fire an event</a> named <var>e</var> at
+<var>target</var>, using {{ProgressEvent}}, with the {{ProgressEvent/loaded}} attribute initialized
+to <var>transmitted</var>, and if <var>length</var> is not 0, with the
+{{ProgressEvent/lengthComputable}} attribute initialized to true and the {{ProgressEvent/total}}
+attribute initialized to <var>length</var>.
 
 
 <h3 id=suggested-names-for-events-using-the-progressevent-interface>Suggested names for events using the {{ProgressEvent}} interface</h3>
 
 <p><em>This section is non-normative.</em>
 
-<p>The suggested <a><code>type</code></a>
+<p>The suggested {{Event/type}}
 attribute values for use with
 <a>events</a> using the
 {{ProgressEvent}} interface are summarized in the table below.
@@ -2071,7 +2053,7 @@ WHATWG community to ensure input from people familiar with the subject.
 <table>
  <tbody>
   <tr>
-   <th><a><code>type</code></a> attribute value
+   <th>{{Event/type}} attribute value
    <th>Description
    <th>Times
    <th>When
@@ -2141,7 +2123,7 @@ otherwise. [[!FETCH]]
  defined in the sections before, and the HTML
  <code>progress</code> element are used together to
  display the process of
- <a>fetching</a> a resource.
+ <a for=/>fetching</a> a resource.
 
  <pre>
 &lt;!DOCTYPE html>
