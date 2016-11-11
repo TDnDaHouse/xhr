@@ -624,7 +624,7 @@ X-Test: one, two</code></pre>
 <h4 id=the-timeout-attribute>The <code>timeout</code> attribute</h4>
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest timeout">timeout</a></code>
+ <dt><code><var>client</var> . <a attribute for=XMLHttpRequest>timeout</a></code>
  <dd>
   <p>Can be set to a time in milliseconds. When set to a non-zero value
   will cause <a>fetching</a> to
@@ -670,7 +670,7 @@ of <a>fetching</a>.
 <h4 id=the-withcredentials-attribute>The <code>withCredentials</code> attribute</h4>
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest withCredentials">withCredentials</a></code>
+ <dt><code><var>client</var> . <a attribute for=XMLHttpRequest>withCredentials</a></code>
  <dd>
   <p>True when <a>user credentials</a> are to be included in a
   cross-origin request. False when they are to be excluded in a
@@ -685,7 +685,7 @@ of <a>fetching</a>.
 </dl>
 
 <p>The
-<dfn lt="dom XMLHttpRequest withCredentials"><code>withCredentials</code></dfn>
+<dfn attribute for=XMLHttpRequest><code>withCredentials</code></dfn>
 attribute must return its value. Initially its value must be false.
 
 <p>Setting the
@@ -715,14 +715,14 @@ attribute has no effect when
 <h4 id=the-upload-attribute>The <code>upload</code> attribute</h4>
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest upload">upload</a></code>
+ <dt><code><var>client</var> . <a attribute for=XMLHttpRequest>upload</a></code>
  <dd><p>Returns the associated <code>XMLHttpRequestUpload</code>
  object. It can be used to gather transmission information when data is
  transferred to a server.
 </dl>
 
 <p>The
-<dfn lt="dom XMLHttpRequest upload"><code>upload</code></dfn>
+<dfn attribute for=XMLHttpRequest><code>upload</code></dfn>
 attribute must return the associated
 <code>XMLHttpRequestUpload</code> object.
 
@@ -733,7 +733,7 @@ object has an associated <code>XMLHttpRequestUpload</code> object.
 <h4 id=the-send()-method>The <code>send()</code> method</h4>
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest send">send</a>([<var>body</var> = null])</code>
+ <dt><code><var>client</var> . <a method for=XMLHttpRequest>send([<var>body</var> = null])</a></code>
  <dd>
   <p>Initiates the request. The optional argument provides the
   <a>request body</a>. The argument is ignored if
@@ -745,7 +745,7 @@ object has an associated <code>XMLHttpRequestUpload</code> object.
   <a><code>send()</code> flag</a> is set.
 </dl>
 
-<p>The <dfn lt="dom XMLHttpRequest send"><code>send(<var>body</var>)</code></dfn>
+<p>The <dfn method for=XMLHttpRequest><code>send(<var>body</var>)</code></dfn>
 method must run these steps:
 
 <ol>
@@ -1217,7 +1217,7 @@ exception <var>exception</var> are:
    <dd>Cancels any network activity.
   </dl>
 
-<p>The <dfn id=dom-xmlhttprequest-abort method for=XMLHTtpRequest><code>abort()</code></dfn> method,
+<p>The <dfn method for=XMLHTtpRequest><code>abort()</code></dfn> method,
 when invoked, must run these steps:
 
 <ol>
@@ -1249,7 +1249,7 @@ sequence). Unless stated otherwise it is the empty byte sequence.
 
 <h4 id=the-responseurl-attribute>The <code>responseURL</code> attribute</h4>
 
-<p>The <dfn lt="dom XMLHttpRequest responseURL"><code>responseURL</code></dfn> attribute
+<p>The <dfn attribute for=XMLHttpRequest><code>responseURL</code></dfn> attribute
 must return the empty string if <a>response</a>'s
 <a>url</a> is null and its
 <a>serialization</a> with the
@@ -1259,7 +1259,7 @@ must return the empty string if <a>response</a>'s
 <h4 id=the-status-attribute>The <code>status</code> attribute</h4>
 
 <p>The
-<dfn lt="dom XMLHttpRequest status"><code>status</code></dfn>
+<dfn attribute for=XMLHttpRequest><code>status</code></dfn>
 attribute must return the <a>response</a>'s
 <a>status</a>.
 
@@ -1267,7 +1267,7 @@ attribute must return the <a>response</a>'s
 <h4 id=the-statustext-attribute>The <code>statusText</code> attribute</h4>
 
 <p>The
-<dfn lt="dom XMLHttpRequest statusText"><code>statusText</code></dfn>
+<dfn attribute for=XMLHttpRequest><code>statusText</code></dfn>
 attribute must return the <a>response</a>'s
 <a>status message</a>.
 
@@ -1275,7 +1275,7 @@ attribute must return the <a>response</a>'s
 <h4 id=the-getresponseheader()-method>The <code>getResponseHeader()</code> method</h4>
 
 <p>The
-<dfn lt="dom XMLHttpRequest getResponseHeader"><code>getResponseHeader(<var>name</var>)</code></dfn>
+<dfn method for=XMLHttpRequest><code>getResponseHeader(<var>name</var>)</code></dfn>
 method must run these steps:
 
 <ol>
@@ -1320,7 +1320,7 @@ client.onreadystatechange = function() {
 <h4 id=the-getallresponseheaders()-method>The <code>getAllResponseHeaders()</code> method</h4>
 
 <p>The
-<dfn lt="dom XMLHttpRequest getAllResponseHeaders"><code>getAllResponseHeaders()</code></dfn>
+<dfn method for=XMLHttpRequest><code>getAllResponseHeaders()</code></dfn>
 method, when invoked, must run these steps:
 
 <ol>
@@ -1592,7 +1592,7 @@ resources using <a>utf-8</a>.
 <h4 id=the-overridemimetype()-method>The <code>overrideMimeType()</code> method</h4>
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest overrideMimeType">overrideMimeType</a>(<var>mime</var>)</code>
+ <dt><code><var>client</var> . <a method for=XMLHttpRequest>overrideMimeType(<var>mime</var>)</a></code>
  <dd>
   <p>Sets the `<code>Content-Type</code>` header for <a>response</a> to
   <var>mime</var>.
@@ -1607,7 +1607,7 @@ resources using <a>utf-8</a>.
 </dl>
 
 <p>The
-<dfn lt="dom XMLHttpRequest overrideMimeType"><code>overrideMimeType(<var>mime</var>)</code></dfn>
+<dfn method for=XMLHttpRequest><code>overrideMimeType(<var>mime</var>)</code></dfn>
 method must run these steps:
 
 <ol>
@@ -1636,7 +1636,7 @@ method must run these steps:
 
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest responseType">responseType</a></code> [ = <var>value</var> ]
+ <dt><code><var>client</var> . <a attribute for=XMLHttpRequest>responseType</a> [ = <var>value</var> ]</code>
  <dd>
   <p>Returns the response type.
   <p>Can be set to change the response type. Values are:
@@ -1664,7 +1664,7 @@ method must run these steps:
 
 
 <p>The
-<dfn lt="dom XMLHttpRequest responseType"><code>responseType</code></dfn>
+<dfn attribute for=XMLHttpRequest><code>responseType</code></dfn>
 attribute must return its value. Initially its value must be the empty
 string.
 
@@ -1700,13 +1700,13 @@ attribute must run these steps:
 <h4 id=the-response-attribute>The <code>response</code> attribute</h4>
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest response">response</a></code>
+ <dt><code><var>client</var> . <a attribute for=XMLHttpRequest>response</a></code>
  <dd><p>Returns the <a>response</a>'s
  <a>body</a>.
 </dl>
 
 <p>The
-<dfn lt="dom XMLHttpRequest response"><code>response</code></dfn>
+<dfn attribute for=XMLHttpRequest><code>response</code></dfn>
 attribute must return the result of running these
 steps:
 
@@ -1757,7 +1757,7 @@ steps:
 <h4 id=the-responsetext-attribute>The <code>responseText</code> attribute</h4>
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest responseText">responseText</a></code>
+ <dt><code><var>client</var> . <a attribute for=XMLHttpRequest>responseText</a></code>
  <dd>
   <p>Returns the <a>text response</a>.
 
@@ -1768,7 +1768,7 @@ steps:
 </dl>
 
 <p>The
-<dfn lt="dom XMLHttpRequest responseText"><code>responseText</code></dfn>
+<dfn attribute for=XMLHttpRequest><code>responseText</code></dfn>
 attribute must return the result of running these
 steps:
 
@@ -1790,7 +1790,7 @@ steps:
 <h4 id=the-responsexml-attribute>The <code>responseXML</code> attribute</h4>
 
 <dl class=domintro>
- <dt><code><var>client</var> . <a lt="dom XMLHttpRequest responseXML">responseXML</a></code>
+ <dt><code><var>client</var> . <a attribute for=XMLHttpRequest>responseXML</a></code>
  <dd>
   <p>Returns the <a>document response</a>.
 
@@ -1801,7 +1801,7 @@ steps:
 </dl>
 
 <p>The
-<dfn lt="dom XMLHttpRequest responseXML"><code>responseXML</code></dfn>
+<dfn attribute for=XMLHttpRequest><code>responseXML</code></dfn>
 attribute must return the result of running these steps:
 
 <ol>
@@ -1817,10 +1817,8 @@ attribute must return the result of running these steps:
  <li><p>Return the <a>document response</a>.
 </ol>
 
-<p class=note>The
-<a><code>responseXML</code></a> attribute
-has XML in its name for historical reasons. It also returns HTML resources
-as <a>documents</a>.
+<p class=note>The {{XMLHttpRequest/responseXML}} attribute has XML in its name for historical
+reasons. It also returns HTML resources as <a for=/>documents</a>.
 
 
 <h3 id=events>Events summary</h3>
@@ -1841,7 +1839,7 @@ and/or <code>XMLHttpRequestUpload</code> objects:
    <td><dfn lt="event xhr readystatechange"><code>readystatechange</code></dfn>
    <td><code>Event</code>
    <td>The <a><code>readyState</code></a> attribute changes
-   value, except when it changes to <a lt="dom XMLHttpRequest UNSENT">UNSENT</a>.
+   value, except when it changes to <a const for=XMLHttpRequest>UNSENT</a>.
   <tr>
    <td><dfn lt="event xhr loadstart"><code>loadstart</code></dfn>
    <td>{{ProgressEvent}}
