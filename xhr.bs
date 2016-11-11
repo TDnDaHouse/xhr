@@ -352,11 +352,11 @@ the row where the value in the cell in the first column is <a>context object</a>
 <table>
  <tbody><tr>
   <td><i>unsent</i>
-  <td><dfn lt="dom XMLHttpRequest UNSENT"><code>UNSENT</code></dfn> (numeric value 0)
+  <td><dfn const for=XMLHttpRequest><code>UNSENT</code></dfn> (numeric value 0)
   <td>The object has been constructed.
  <tr>
   <td><i>opened</i>
-  <td><dfn lt="dom XMLHttpRequest OPENED"><code>OPENED</code></dfn> (numeric value 1)
+  <td><dfn const for=XMLHttpRequest><code>OPENED</code></dfn> (numeric value 1)
   <td>The <a><code>open()</code></a> method has been successfully
    invoked. During this state request headers can be set using
    <a><code>setRequestHeader()</code></a> and the
@@ -364,18 +364,18 @@ the row where the value in the cell in the first column is <a>context object</a>
    method.
  <tr>
   <td><i>headers received</i>
-  <td><dfn lt="dom XMLHttpRequest HEADERS_RECEIVED"><code>HEADERS_RECEIVED</code></dfn>
+  <td><dfn const for=XMLHttpRequest><code>HEADERS_RECEIVED</code></dfn>
    (numeric value 2)
   <td>All redirects (if any) have been followed and all HTTP headers of the
    <a>response</a> have been received.
  <tr>
   <td><i>loading</i>
-  <td><dfn lt="dom XMLHttpRequest LOADING"><code>LOADING</code></dfn> (numeric value 3)
+  <td><dfn const for=XMLHttpRequest><code>LOADING</code></dfn> (numeric value 3)
   <td>The <a>response</a>'s
   <a>body</a> is being received.
  <tr>
   <td><i>done</i>
-  <td><dfn lt="dom XMLHttpRequest DONE"><code>DONE</code></dfn> (numeric value 4)
+  <td><dfn const for=XMLHttpRequest><code>DONE</code></dfn> (numeric value 4)
   <td>The data transfer has been completed or something went wrong during the transfer
    (e.g. infinite redirects).
 </table>
@@ -446,7 +446,7 @@ experiment with <a lt=throw>throwing</a> an
 <code>InvalidAccessError</code> exception when it occurs.
 
 <p>The
-<dfn id=dom-xmlhttprequest-open method for=XMLHttpRequest><code>open(<var>method</var>, <var>url</var>, <var>async</var>, <var>username</var>, <var>password</var>)</code></dfn>
+<dfn method for=XMLHttpRequest><code>open(<var>method</var>, <var>url</var>, <var>async</var>, <var>username</var>, <var>password</var>)</code></dfn>
 method, when invoked, must run these steps:
 
 <ol>
@@ -454,15 +454,15 @@ method, when invoked, must run these steps:
  <a>relevant settings object</a> has a
  <a>responsible document</a> and it is <em>not</em>
  <a>fully active</a>,
- <a lt=throw>throw</a> an <code>InvalidStateError</code> exception.
+ <a>throw</a> an <code>InvalidStateError</code> exception.
 
  <li><p>If <var>method</var> is not a
  <a>method</a>,
- <a lt=throw>throw</a> a
+ <a>throw</a> a
  <code>SyntaxError</code> exception.
 
  <li><p>If <var>method</var> is a <a>forbidden method</a>,
- <a lt=throw>throw</a> a
+ <a>throw</a> a
  <code>SecurityError</code> exception.
 
  <li><p><a>Normalize</a>
@@ -475,7 +475,7 @@ method, when invoked, must run these steps:
  <a>API base URL</a>.
 
  <li><p>If <var>parsedURL</var> is failure,
- <a lt=throw>throw</a> a
+ <a>throw</a> a
  <code>SyntaxError</code> exception.
 
  <li>
@@ -503,7 +503,7 @@ method, when invoked, must run these steps:
  <a>global object</a> is a <code>Window</code>
  object, and the <a><code>timeout</code></a> attribute value is not zero
  or the <a><code>responseType</code></a> attribute value is not the
- empty string, then <a lt=throw>throw</a> an
+ empty string, then <a>throw</a> an
  <code>InvalidAccessError</code> exception.
 
  <li>
@@ -576,11 +576,11 @@ method must run these steps:
 
 <ol>
  <li><p>If <a>state</a> is not
- <i>opened</i>, <a lt=throw>throw</a> an
+ <i>opened</i>, <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
  <li><p>If the <a><code>send()</code> flag</a> is set,
- <a lt=throw>throw</a> an
+ <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
  <li><p><a>Normalize</a>
@@ -590,7 +590,7 @@ method must run these steps:
   <p>If <var>name</var> is not a
   <a>name</a> or <var>value</var>
   is not a <a>value</a>,
-  <a lt=throw>throw</a> a
+  <a>throw</a> a
   <code>SyntaxError</code> exception.
 
   <p class="note no-backref">An empty byte sequence represents an empty
@@ -654,7 +654,7 @@ attribute must run these steps:
  <li><p>If <a>entry settings object</a>'s
  <a>global object</a> is a <code>Window</code>
  object and the <a>synchronous flag</a> is set,
- <a lt=throw>throw</a> an
+ <a>throw</a> an
  <code>InvalidAccessError</code> exception.
 
  <li><p>Set its value to the new value.
@@ -695,11 +695,11 @@ attribute must run these steps:
 <ol>
  <li><p>If <a>state</a> is not
  <i>unsent</i> or <i>opened</i>,
- <a lt=throw>throw</a> an
+ <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
  <li><p>If the <a><code>send()</code> flag</a> is set,
- <a lt=throw>throw</a> an
+ <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
  <li><p>Set the <a><code>withCredentials</code></a>
@@ -750,11 +750,11 @@ method must run these steps:
 
 <ol>
  <li><p>If <a>state</a> is not
- <i>opened</i>, <a lt=throw>throw</a> an
+ <i>opened</i>, <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
  <li><p>If the <a><code>send()</code> flag</a> is set,
- <a lt=throw>throw</a> an
+ <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
  <li><p>If the <a>request method</a> is <code>GET</code> or
@@ -1178,7 +1178,7 @@ exception <var>exception</var> are:
  <a>network error</a>.
 
  <li><p>If the <a>synchronous flag</a> is set,
- <a lt=throw>throw</a> an <var>exception</var>
+ <a>throw</a> an <var>exception</var>
  exception.
 
  <li>
@@ -1613,12 +1613,12 @@ method must run these steps:
 <ol>
  <li><p>If <a>state</a> is
  <i>loading</i> or <i>done</i>,
- <a lt=throw>throw</a> an
+ <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
  <li><p>If parsing <var>mime</var> analogously to the value of
  the `<code>Content-Type</code>` header fails,
- <a lt=throw>throw</a> a
+ <a>throw</a> a
  <code>SyntaxError</code> exception.
 
  <li><p>If <var>mime</var> is successfully parsed, set
@@ -1680,13 +1680,13 @@ attribute must run these steps:
 
  <li><p>If <a>state</a> is
  <i>loading</i> or <i>done</i>,
- <a lt=throw>throw</a> an
+ <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
  <li><p>If <a>entry settings object</a>'s
  <a>global object</a> is a <code>Window</code>
  object and the <a>synchronous flag</a> is set,
- <a lt=throw>throw</a> an
+ <a>throw</a> an
  <code>InvalidAccessError</code> exception.
 
  <li><p>Set the
@@ -1776,7 +1776,7 @@ steps:
 
  <li><p>If <a><code>responseType</code></a> is not the
  empty string or "<code>text</code>",
- <a lt=throw>throw</a> an
+ <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
 
@@ -1808,7 +1808,7 @@ attribute must return the result of running these steps:
  <li><p>If
  <a><code>responseType</code></a> is not
  the empty string or "<code>document</code>",
- <a lt=throw>throw</a> an
+ <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
  <li><p>If <a>state</a> is not <i>done</i>,
@@ -2257,7 +2257,7 @@ Peter Michaux,
 Philip Jägenstedt,
 Philip Taylor,
 Robin Berjon,
-Rune <a lt=Fabulous>F.</a> Halvorsen,
+Rune <span title=Fabulous>F.</span> Halvorsen,
 Ruud Steltenpool,
 Sergiu Dumitriu,
 Shivakumar Jagalur Matt,
