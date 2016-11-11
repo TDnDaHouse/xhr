@@ -348,7 +348,7 @@ supported as attribute solely by the
 </dl>
 
 <p>The
-<dfn id=dom-xmlhttprequest-readystate attribute for=XMLHttpRequest><code>readyState</code></dfn>
+<dfn attribute for=XMLHttpRequest><code>readyState</code></dfn>
 attribute's getter must return the value from the table below in the cell of the second column, from
 the row where the value in the cell in the first column is <a>context object</a>'s <a>state</a>:
 
@@ -825,7 +825,7 @@ method must run these steps:
 
  <li>
   <p>Let <var>req</var> be a new
-  <a>request</a>, initialized as
+  <a for=/>request</a>, initialized as
   follows:
 
   <dl>
@@ -995,11 +995,11 @@ method must run these steps:
       <var>response</var>'s <a for=response>body</a>'s
       <a for=body>stream</a>.
 
-      <p><a class="note no-backref">This operation will not throw an exception.</a>
+      <p><span class="note no-backref">This operation will not throw an exception.</span>
 
      <li>
       <p>Let <var>read</var> be the result of
-      <a>reading a chunk</a>
+      <a lt="read a chunk" for=ReadableStream>reading a chunk</a>
       from <var>response</var>'s
       <a for=response>body</a>'s
       <a>stream</a> with <var>reader</var>.
@@ -1067,13 +1067,11 @@ method must run these steps:
     <var>response</var>'s <a for=response>body</a>'s
     <a for=body>stream</a>.
 
-    <p><a class="note no-backref">This operation will not throw an exception.</a>
+    <p><span class="note no-backref">This operation will not throw an exception.</span>
 
    <li><p>Let <var>promise</var> be the result of
-   <a>reading all
-   bytes</a> from <var>response</var>'s
-   <a for=response>body</a>'s
-   <a>stream</a> with <var>reader</var>.
+   <a lt="read all bytes" for=ReadableStream>reading all bytes</a> from <var>response</var>'s
+   <a for=response>body</a>'s <a for=body>stream</a> with <var>reader</var>.
 
    <li><p>Wait for <var>promise</var> to be fulfilled or rejected.
 
@@ -1249,7 +1247,7 @@ sequence). Unless stated otherwise it is the empty byte sequence.
 <p>The <dfn attribute for=XMLHttpRequest><code>responseURL</code></dfn> attribute
 must return the empty string if <a>response</a>'s
 <a for=response>url</a> is null and its
-<a>serialization</a> with the
+<a lt="URL serializer">serialization</a> with the
 <i>exclude fragment flag</i> set otherwise.
 
 
@@ -1831,7 +1829,7 @@ and/or <code>XMLHttpRequestUpload</code> objects:
   <tr>
    <td><dfn lt="event xhr readystatechange"><code>readystatechange</code></dfn>
    <td><code>Event</code>
-   <td>The <a><code>readyState</code></a> attribute changes
+   <td>The {{XMLHttpRequest/readyState}} attribute changes
    value, except when it changes to <a const for=XMLHttpRequest>UNSENT</a>.
   <tr>
    <td><dfn lt="event xhr loadstart"><code>loadstart</code></dfn>
@@ -2098,8 +2096,7 @@ WHATWG community to ensure input from people familiar with the subject.
 
 <p>Throughout the web platform the <code>error</code>, <code>abort</code>,
 <code>timeout</code> and <code>load</code> event types have
-their <a><code>bubbles</code></a> and
-<a><code>cancelable</code></a>
+their {{Event/bubbles}} and {{Event/cancelable}}
 attributes initialized to false, so it is suggested that for consistency all
 <a>events</a> using the
 {{ProgressEvent}} interface do the same.
