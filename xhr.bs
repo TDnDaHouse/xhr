@@ -25,6 +25,11 @@ Translate IDs: dictdef-progresseventinit progresseventinit
 spec:dom; type:interface; text:Document
 </pre>
 
+<pre class=anchors>
+urlPrefix: https://w3c.github.io/DOM-Parsing/; spec: dom-parsing
+    type: dfn; text: fragment serializing algorithm; url: dfn-fragment-serializing-algorithm
+</pre>
+
 <pre class=biblio>
 {
   "DOMPS": {
@@ -289,7 +294,7 @@ connection is still open, the user agent must <a>terminate the request</a>.
 <a>event handlers</a> (and their corresponding
 <a>event handler event types</a>)
 that must be supported on objects implementing an interface that inherits
-from <code>XMLHttpRequestEventTarget</code> as attributes:
+from {{XMLHttpRequestEventTarget}} as attributes:
 
 <table>
  <thead>
@@ -298,25 +303,25 @@ from <code>XMLHttpRequestEventTarget</code> as attributes:
    <th><a>event handler event type</a>
  <tbody>
   <tr>
-   <td><dfn lt="handler xhr onloadstart"><code>onloadstart</code></dfn>
+   <td><dfn id=handler-xhr-onloadstart attribute for=XMLHttpRequestEventTarget><code>onloadstart</code></dfn>
    <td><a event><code>loadstart</code></a>
   <tr>
-   <td><dfn lt="handler xhr onprogress"><code>onprogress</code></dfn>
+   <td><dfn id=handler-xhr-onprogress attribute for=XMLHttpRequestEventTarget><code>onprogress</code></dfn>
    <td><a event><code>progress</code></a>
   <tr>
-   <td><dfn lt="handler xhr onabort"><code>onabort</code></dfn>
+   <td><dfn id=handler-xhr-onabort attribute for=XMLHttpRequestEventTarget><code>onabort</code></dfn>
    <td><a event><code>abort</code></a>
   <tr>
-   <td><dfn lt="handler xhr onerror"><code>onerror</code></dfn>
+   <td><dfn id=handler-xhr-onerror attribute for=XMLHttpRequestEventTarget><code>onerror</code></dfn>
    <td><a event><code>error</code></a>
   <tr>
-   <td><dfn lt="handler xhr onload"><code>onload</code></dfn>
+   <td><dfn id=handler-xhr-onload attribute for=XMLHttpRequestEventTarget><code>onload</code></dfn>
    <td><a event><code>load</code></a>
   <tr>
-   <td><dfn lt="handler xhr ontimeout"><code>ontimeout</code></dfn>
+   <td><dfn id=handler-xhr-ontimeout attribute for=XMLHttpRequestEventTarget><code>ontimeout</code></dfn>
    <td><a event><code>timeout</code></a>
   <tr>
-   <td><dfn lt="handler xhr onloadend"><code>onloadend</code></dfn>
+   <td><dfn id=handler-xhr-onloadend attribute for=XMLHttpRequestEventTarget><code>onloadend</code></dfn>
    <td><a event><code>loadend</code></a>
 </table>
 
@@ -334,7 +339,7 @@ supported as attribute solely by the
    <th><a>event handler event type</a>
  <tbody>
   <tr>
-   <td><dfn lt="handler xhr onreadystatechange"><code>onreadystatechange</code></dfn>
+   <td><dfn id=handler-xhr-onreadystatechange attribute for=XMLHttpRequest><code>onreadystatechange</code></dfn>
    <td><a event><code>readystatechange</code></a>
 </table>
 
@@ -775,14 +780,14 @@ method must run these steps:
     to <var>Content-Type</var>.
 
     <p>Set <a>request body</a> to <var>body</var>,
-    <a>serialized</a> with the
+    <a lt="fragment serializing algorithm">serialized</a> with the
     <i>require well-formed flag</i> set,
     <a lt="obtain Unicode">converted to Unicode</a>,
     and <a lt="UTF-8 encode">utf-8 encoded</a>.
     Rethrow any exceptions.
 
     <p class=note>If <var>body</var> cannot be
-    <a>serialized</a>, an
+    <a lt="fragment serializing algorithm">serialized</a>, an
     <code>InvalidStateError</code> exception is thrown.
 
    <dt id=dom-xmlhttprequest-send-bodyinit><code>BodyInit</code>
