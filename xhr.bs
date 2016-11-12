@@ -437,7 +437,7 @@ request-associated concepts:
   `<code>CONNECT</code>`, `<code>TRACE</code>` or `<code>TRACK</code>`.
 
   <p>Throws an <code>InvalidAccessError</code> exception if <var>async</var> is false,
-  <a>entry global object</a> is a <code>Window</code>
+  <a>current global object</a> is a <code>Window</code>
   object, and the {{XMLHttpRequest/timeout!!attribute}} attribute is not zero or the
   {{XMLHttpRequest/responseType}} attribute is not the empty string.
 </dl>
@@ -446,7 +446,7 @@ request-associated concepts:
 outside of workers is in the process of being removed from the web platform as it has
 detrimental effects to the end user's experience. (This is a long process that takes many
 years.) Developers must not pass false for the <var>async</var> argument when
-<a>entry global object</a> is a <code>Window</code>
+<a>current global object</a> is a <code>Window</code>
 object. User agents are strongly encouraged to warn about such usage in developer tools and may
 experiment with <a lt=throw>throwing</a> an
 <code>InvalidAccessError</code> exception when it occurs.
@@ -505,7 +505,7 @@ method, when invoked, must run these steps:
    <var>password</var>.
   </ol>
 
- <li><p>If <var>async</var> is false, <a>entry global object</a> is a <code>Window</code>
+ <li><p>If <var>async</var> is false, <a>current global object</a> is a <code>Window</code>
  object, and the {{XMLHttpRequest/timeout!!attribute}} attribute value is not zero
  or the {{XMLHttpRequest/responseType}} attribute value is not the
  empty string, then <a>throw</a> an
@@ -643,7 +643,7 @@ X-Test: one, two</code></pre>
   <p>When set: throws an
   <code>InvalidAccessError</code> exception if
   the <a>synchronous flag</a> is set and
-  <a>entry global object</a> is a <code>Window</code>
+  <a>current global object</a> is a <code>Window</code>
   object.
 
 </dl>
@@ -655,7 +655,7 @@ attribute must return its value. Initially its value must be zero.
 attribute must run these steps:
 
 <ol>
- <li><p>If <a>entry global object</a> is a <code>Window</code>
+ <li><p>If <a>current global object</a> is a <code>Window</code>
  object and the <a>synchronous flag</a> is set,
  <a>throw</a> an
  <code>InvalidAccessError</code> exception.
@@ -1647,7 +1647,7 @@ method must run these steps:
   "<code>json</code>", and
   "<code>text</code>".
   <p>When set: setting to "<code>document</code>" is ignored if
-  <a>entry global object</a> is <em>not</em> a
+  <a>current global object</a> is <em>not</em> a
   <code>Window</code> object.
   <p>When set: throws an
   <code>InvalidStateError</code> exception if
@@ -1656,7 +1656,7 @@ method must run these steps:
   <p>When set: throws an
   <code>InvalidAccessError</code> exception if the
   <a>synchronous flag</a> is set and
-  <a>entry global object</a> is a <code>Window</code>
+  <a>current global object</a> is a <code>Window</code>
   object.
 </dl>
 
@@ -1671,7 +1671,7 @@ string.
 attribute must run these steps:
 
 <ol>
- <li><p>If <a>entry global object</a> is <em>not</em> a
+ <li><p>If <a>current global object</a> is <em>not</em> a
  <code>Window</code> object and the given value is
  "<code>document</code>", terminate these steps.
 
@@ -1680,7 +1680,7 @@ attribute must run these steps:
  <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
- <li><p>If <a>entry global object</a> is a <code>Window</code>
+ <li><p>If <a>current global object</a> is a <code>Window</code>
  object and the <a>synchronous flag</a> is set,
  <a>throw</a> an
  <code>InvalidAccessError</code> exception.
