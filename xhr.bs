@@ -14,7 +14,7 @@ Boilerplate: omit feedback-header, omit conformance, omit index, omit idl-index
 !Commits: <a href=https://twitter.com/xhrstandard>@xhrstandard</a>
 !Tests: <a href=https://w3c-test.org/XMLHttpRequest/>XMLHttpRequest tests</a> are hosted in the <a href="https://github.com/w3c/web-platform-tests/">W3C Web platform testsuite</a> &mdash; contributions welcome!
 !Translation (non-normative): <span title=Japanese><a href=https://triple-underscore.github.io/XHR-ja.html lang=ja hreflang=ja rel=alternate>日本語</a></span>
-Translate IDs: dictdef-progresseventinit progresseventinit
+Translate IDs: enumdef-xmlhttprequestresponsetype xmlhttprequestresponsetype,dictdef-progresseventinit progresseventinit,typedefdef-formdataentryvalue formdataentryvalue
 </pre>
 
 <script src=https://resources.whatwg.org/file-issue.js async></script>
@@ -238,10 +238,10 @@ interface XMLHttpRequest : XMLHttpRequestEventTarget {
 };</pre>
 
 <p>An {{XMLHttpRequest}} object has an associated
-<code>XMLHttpRequestUpload</code> object.
+{{XMLHttpRequestUpload}} object.
 
 <p>An {{XMLHttpRequest}} object has an associated
-<dfn>state</dfn>, which is one of
+<dfn id=concept-xmlhttprequest-state>state</dfn>, which is one of
 <i>unsent</i>,
 <i>opened</i>,
 <i>headers received</i>,
@@ -435,7 +435,7 @@ the row where the value in the cell in the first column is <a>context object</a>
   `<code>CONNECT</code>`, `<code>TRACE</code>` or `<code>TRACK</code>`.
 
   <p>Throws an <code>InvalidAccessError</code> exception if <var>async</var> is false,
-  <a>current global object</a> is a <code>Window</code>
+  <a>current global object</a> is a {{Window}}
   object, and the {{XMLHttpRequest/timeout!!attribute}} attribute is not zero or the
   {{XMLHttpRequest/responseType}} attribute is not the empty string.
 </dl>
@@ -444,7 +444,7 @@ the row where the value in the cell in the first column is <a>context object</a>
 outside of workers is in the process of being removed from the web platform as it has
 detrimental effects to the end user's experience. (This is a long process that takes many
 years.) Developers must not pass false for the <var>async</var> argument when
-<a>current global object</a> is a <code>Window</code>
+<a>current global object</a> is a {{Window}}
 object. User agents are strongly encouraged to warn about such usage in developer tools and may
 experiment with <a lt=throw>throwing</a> an
 <code>InvalidAccessError</code> exception when it occurs.
@@ -503,7 +503,7 @@ method, when invoked, must run these steps:
    <var>password</var>.
   </ol>
 
- <li><p>If <var>async</var> is false, <a>current global object</a> is a <code>Window</code>
+ <li><p>If <var>async</var> is false, <a>current global object</a> is a {{Window}}
  object, and the {{XMLHttpRequest/timeout!!attribute}} attribute value is not zero
  or the {{XMLHttpRequest/responseType}} attribute value is not the
  empty string, then <a>throw</a> an
@@ -591,14 +591,14 @@ method must run these steps:
 
  <li>
   <p>If <var>name</var> is not a
-  <a>name</a> or <var>value</var>
-  is not a <a>value</a>,
+  <a for=header>name</a> or <var>value</var>
+  is not a <a for=header>value</a>,
   <a>throw</a> a
   <code>SyntaxError</code> exception.
 
   <p class="note no-backref">An empty byte sequence represents an empty
   <a>header</a>
-  <a>value</a>.
+  <a for=header>value</a>.
 
  <li><p>Terminate these steps if <var>name</var> is a
  <a>forbidden header name</a>.
@@ -641,7 +641,7 @@ X-Test: one, two</code></pre>
   <p>When set: throws an
   <code>InvalidAccessError</code> exception if
   the <a>synchronous flag</a> is set and
-  <a>current global object</a> is a <code>Window</code>
+  <a>current global object</a> is a {{Window}}
   object.
 
 </dl>
@@ -653,7 +653,7 @@ attribute must return its value. Initially its value must be zero.
 attribute must run these steps:
 
 <ol>
- <li><p>If <a>current global object</a> is a <code>Window</code>
+ <li><p>If <a>current global object</a> is a {{Window}}
  object and the <a>synchronous flag</a> is set,
  <a>throw</a> an
  <code>InvalidAccessError</code> exception.
@@ -717,7 +717,7 @@ attribute has no effect when
 
 <dl class=domintro>
  <dt><code><var>client</var> . <a attribute for=XMLHttpRequest>upload</a></code>
- <dd><p>Returns the associated <code>XMLHttpRequestUpload</code>
+ <dd><p>Returns the associated {{XMLHttpRequestUpload}}
  object. It can be used to gather transmission information when data is
  transferred to a server.
 </dl>
@@ -725,10 +725,10 @@ attribute has no effect when
 <p>The
 <dfn attribute for=XMLHttpRequest><code>upload</code></dfn>
 attribute must return the associated
-<code>XMLHttpRequestUpload</code> object.
+{{XMLHttpRequestUpload}} object.
 
 <p class=note>As indicated earlier, each {{XMLHttpRequest}}
-object has an associated <code>XMLHttpRequestUpload</code> object.
+object has an associated {{XMLHttpRequestUpload}} object.
 
 
 <h4 id=the-send()-method>The <code>send()</code> method</h4>
@@ -768,7 +768,7 @@ method must run these steps:
   follow these rules, depending on <var>body</var>:
 
   <dl class=switch>
-   <dt id=dom-xmlhttprequest-send-document><code>Document</code>
+   <dt id=dom-xmlhttprequest-send-document>{{Document}}
    <dd>
     <p>Set <var>encoding</var> to `<code>UTF-8</code>`.
 
@@ -788,7 +788,7 @@ method must run these steps:
     <a lt="fragment serializing algorithm">serialized</a>, an
     <code>InvalidStateError</code> exception is thrown.
 
-   <dt id=dom-xmlhttprequest-send-bodyinit><code>BodyInit</code>
+   <dt id=dom-xmlhttprequest-send-bodyinit>{{BodyInit}}
    <dd>
     <p>If <var>body</var> is a string, set <var>encoding</var> to
     `<code>UTF-8</code>`.
@@ -799,16 +799,16 @@ method must run these steps:
 
   <p>If <var>Content-Type</var> is non-null and <a>author request headers</a>
   contains no <a>header</a>
-  <a>named</a>
+  <a for=header>named</a>
   `<code>Content-Type</code>`,
   <a for="header list">append</a>
   `<code>Content-Type</code>`/<var>Content-Type</var> to
   <a>author request headers</a>.
 
   <p>Otherwise, if the <a>header</a>
-  <a>named</a>
+  <a for=header>named</a>
   `<code>Content-Type</code>` in <a>author request headers</a> has a
-  <a>value</a> that is a
+  <a for=header>value</a> that is a
   <a>valid MIME type</a>, which has a
   `<code>charset</code>` parameter whose value is not a case-insensitive
   match for <var>encoding</var>, and <var>encoding</var>
@@ -816,7 +816,7 @@ method must run these steps:
   case-insensitive match for <var>encoding</var> of that
   `<code>Content-Type</code>`
   <a>header</a>'s
-  <a>value</a> to
+  <a for=header>value</a> to
   <var>encoding</var>.
   <!-- XXX could still be better with case-insensitive and parameter cross-ref -->
 
@@ -824,7 +824,7 @@ method must run these steps:
   to be included as the first parameter for compatibility reasons -->
 
  <li><p>If one or more event listeners are registered on the associated
- <code>XMLHttpRequestUpload</code> object, then set <a>upload listener flag</a>.
+ {{XMLHttpRequestUpload}} object, then set <a>upload listener flag</a>.
 
  <li>
   <p>Let <var>req</var> be a new
@@ -879,7 +879,7 @@ method must run these steps:
    <li><p>If the <a>upload complete flag</a> is unset and <a>upload listener flag</a> is
    set, then <a>fire a progress event</a> named
    <a event><code>loadstart</code></a> on the
-   <code>XMLHttpRequestUpload</code> object with 0 and <var>req</var>'s
+   {{XMLHttpRequestUpload}} object with 0 and <var>req</var>'s
    <a for=request>body</a>'s
    <a>total bytes</a>.
 
@@ -920,7 +920,7 @@ method must run these steps:
      <li><p>If <a>upload listener flag</a> is set, then
      <a>fire a progress event</a> named
      <a event><code>progress</code></a> on the
-     <code>XMLHttpRequestUpload</code> object with <var>request</var>'s
+     {{XMLHttpRequestUpload}} object with <var>request</var>'s
      <a for=request>body</a>'s
      <a>transmitted bytes</a> and
      <var>request</var>'s
@@ -949,17 +949,17 @@ method must run these steps:
 
      <li><p><a>Fire a progress event</a> named
      <a event><code>progress</code></a> on the
-     <code>XMLHttpRequestUpload</code> object with <var>transmitted</var> and
+     {{XMLHttpRequestUpload}} object with <var>transmitted</var> and
      <var>length</var>.
 
      <li><p><a>Fire a progress event</a> named
      <a event><code>load</code></a> on the
-     <code>XMLHttpRequestUpload</code> object with <var>transmitted</var> and
+     {{XMLHttpRequestUpload}} object with <var>transmitted</var> and
      <var>length</var>.
 
      <li><p><a>Fire a progress event</a> named
      <a event><code>loadend</code></a> on the
-     <code>XMLHttpRequestUpload</code> object with <var>transmitted</var> and
+     {{XMLHttpRequestUpload}} object with <var>transmitted</var> and
      <var>length</var>.
     </ol>
     <!-- upload complete flag can never be set here I hope -->
@@ -1193,10 +1193,10 @@ exception <var>exception</var> are:
    <li><p>If <a>upload listener flag</a> is unset, then terminate these substeps.
 
    <li><p><a>Fire a progress event</a> named
-   <var>event</var> on the <code>XMLHttpRequestUpload</code> object with 0 and 0.
+   <var>event</var> on the {{XMLHttpRequestUpload}} object with 0 and 0.
 
    <li><p><a>Fire a progress event</a> named
-   <a event><code>loadend</code></a> on the <code>XMLHttpRequestUpload</code>
+   <a event><code>loadend</code></a> on the {{XMLHttpRequestUpload}}
    object with 0 and 0.
   </ol>
 
@@ -1215,7 +1215,7 @@ exception <var>exception</var> are:
    <dd>Cancels any network activity.
   </dl>
 
-<p>The <dfn method for=XMLHTtpRequest><code>abort()</code></dfn> method,
+<p>The <dfn method for=XMLHttpRequest><code>abort()</code></dfn> method,
 when invoked, must run these steps:
 
 <ol>
@@ -1334,9 +1334,9 @@ method, when invoked, must run these steps:
 
   <ol>
    <li><p>Append <var>header</var>'s
-   <a>name</a>, followed by a 0x3A 0x20 byte
+   <a for=header>name</a>, followed by a 0x3A 0x20 byte
    pair, followed by <var>header</var>'s
-   <a>value</a>, to <var>output</var>.
+   <a for=header>value</a>, to <var>output</var>.
 
    <li><p>If <var>header</var> is not the last pair in <var>headers</var>, then append a 0x0D 0x0A
    byte pair, to <var>output</var>.
@@ -1646,7 +1646,7 @@ method must run these steps:
   "<code>text</code>".
   <p>When set: setting to "<code>document</code>" is ignored if
   <a>current global object</a> is <em>not</em> a
-  <code>Window</code> object.
+  {{Window}} object.
   <p>When set: throws an
   <code>InvalidStateError</code> exception if
   <a>state</a> is <i>loading</i> or
@@ -1654,7 +1654,7 @@ method must run these steps:
   <p>When set: throws an
   <code>InvalidAccessError</code> exception if the
   <a>synchronous flag</a> is set and
-  <a>current global object</a> is a <code>Window</code>
+  <a>current global object</a> is a {{Window}}
   object.
 </dl>
 
@@ -1670,7 +1670,7 @@ attribute must run these steps:
 
 <ol>
  <li><p>If <a>current global object</a> is <em>not</em> a
- <code>Window</code> object and the given value is
+ {{Window}} object and the given value is
  "<code>document</code>", terminate these steps.
 
  <li><p>If <a>state</a> is
@@ -1678,7 +1678,7 @@ attribute must run these steps:
  <a>throw</a> an
  <code>InvalidStateError</code> exception.
 
- <li><p>If <a>current global object</a> is a <code>Window</code>
+ <li><p>If <a>current global object</a> is a {{Window}}
  object and the <a>synchronous flag</a> is set,
  <a>throw</a> an
  <code>InvalidAccessError</code> exception.
@@ -1820,7 +1820,7 @@ reasons. It also returns HTML resources as <a for=/>documents</a>.
 <p><em>This section is non-normative.</em>
 
 <p>The following events are dispatched on {{XMLHttpRequest}}
-and/or <code>XMLHttpRequestUpload</code> objects:
+and/or {{XMLHttpRequestUpload}} objects:
 
 <table>
  <thead>
@@ -1886,20 +1886,20 @@ interface FormData {
 };</pre>
 
 <p>The {{FormData}} object represents an ordered list of
-<dfn>entries</dfn>. Each
+<dfn id=concept-formdata-entry for=FormData lt=entry|entries>entries</dfn>. Each
 <a>entry</a> consists of a
-<dfn>name</dfn> and a
-<dfn>value</dfn>.
+<dfn id=concept-formdata-entry-name for=entry>name</dfn> and a
+<dfn id=concept-formdata-entry-value for=entry>value</dfn>.
 
 <p>For the purposes of interaction with other algorithms, an
 <a>entry</a>'s type is "string" if its
 <a>value</a> is a string and "file" otherwise. If
 an <a>entry</a>'s type is "file", its filename is
 the empty string if <a>value</a> is not
-a <code>File</code> object, and otherwise its filename is the
+a {{File}} object, and otherwise its filename is the
 value of <a>entry</a>'s
 <a>value</a>'s
-<a><code>name</code></a> attribute.
+{{File/name}} attribute.
 
 <p>To <dfn>create an entry</dfn> for <var>name</var>, <var>value</var>, and optionally a
 <var>filename</var>, run these steps:
@@ -1910,17 +1910,17 @@ value of <a>entry</a>'s
  <li><p>Set <var>entry</var>'s <a>name</a> to
  <var>name</var>.
 
- <li><p>If <var>value</var> is a <code>Blob</code> object and not a
- <code>File</code> object, then set <var>value</var> to a new
- <code>File</code> object, representing the same bytes, whose
+ <li><p>If <var>value</var> is a {{Blob}} object and not a
+ {{File}} object, then set <var>value</var> to a new
+ {{File}} object, representing the same bytes, whose
  <a><code>name</code></a> attribute value is
  "<code>blob</code>".
  <!-- XXX at some point File API should get internal slots for this -->
 
- <li><p>If <var>value</var> is (now) a <code>File</code> object and
+ <li><p>If <var>value</var> is (now) a {{File}} object and
  <var>filename</var> is given, then set <var>value</var> to a new
- <code>File</code> object, representing the same bytes, whose
- <a><code>name</code></a> attribute value is
+ {{File}} object, representing the same bytes, whose
+ {{File/name}} attribute value is
  <var>filename</var>.
 
  <li><p>Set <var>entry</var>'s <a>value</a> to
@@ -2031,10 +2031,10 @@ attributes must return the value they were initialized to.
 
 <h3 id=firing-events-using-the-progressevent-interface>Firing events using the {{ProgressEvent}} interface</h3>
 
-<p>To <dfn>fire a progress event</dfn> named <var>e</var> at <var>target</var>, given
-<var>transmitted</var> and <var>length</var>, means to <a>fire an event</a> named <var>e</var> at
-<var>target</var>, using {{ProgressEvent}}, with the {{ProgressEvent/loaded}} attribute initialized
-to <var>transmitted</var>, and if <var>length</var> is not 0, with the
+<p>To <dfn id=concept-event-fire-progress>fire a progress event</dfn> named <var>e</var> at
+<var>target</var>, given <var>transmitted</var> and <var>length</var>, means to <a>fire an event</a>
+named <var>e</var> at <var>target</var>, using {{ProgressEvent}}, with the {{ProgressEvent/loaded}}
+attribute initialized to <var>transmitted</var>, and if <var>length</var> is not 0, with the
 {{ProgressEvent/lengthComputable}} attribute initialized to true and the {{ProgressEvent/total}}
 attribute initialized to <var>length</var>.
 
@@ -2121,7 +2121,7 @@ otherwise. [[!FETCH]]
 <div id=example-progress-events class=example>
  <p>In this example {{XMLHttpRequest}}, combined with concepts
  defined in the sections before, and the HTML
- <a event><code>progress</code></a> element are used together to
+ <{progress}> element are used together to
  display the process of
  <a for=/>fetching</a> a resource.
 
@@ -2257,7 +2257,7 @@ Zhenbin Xu
 for their contributions to this standard.
 
 <p>Special thanks to the Microsoft employees who first implemented the
-{{XMLHttpRequest}} interface, which was first widely deployed by the
+<code>XMLHttpRequest</code> interface, which was first widely deployed by the
 Windows Internet Explorer browser.
 
 <p>Special thanks to Ian Hickson for drafting an initial version of this specification in
