@@ -168,7 +168,7 @@ XML.
 <p>The term <dfn>user credentials</dfn> for the purposes of this
 specification means cookies, HTTP authentication, and TLS client certificates.
 Specifically it does not refer to proxy authentication or the
-<a><code>Origin</code></a> header.
+<a http-header><code>Origin</code></a> header.
 [[!COOKIES]] <!-- XXX ref? -->
 
 
@@ -438,7 +438,7 @@ request-associated concepts:
 
   <p>Throws an <code>InvalidAccessError</code> exception if <var>async</var> is false,
   <a>entry global object</a> is a <code>Window</code>
-  object, and the {{XMLHttpRequest/timeout}} attribute is not zero or the
+  object, and the {{XMLHttpRequest/timeout!!attribute}} attribute is not zero or the
   {{XMLHttpRequest/responseType}} attribute is not the empty string.
 </dl>
 
@@ -506,7 +506,7 @@ method, when invoked, must run these steps:
   </ol>
 
  <li><p>If <var>async</var> is false, <a>entry global object</a> is a <code>Window</code>
- object, and the {{XMLHttpRequest/timeout}} attribute value is not zero
+ object, and the {{XMLHttpRequest/timeout!!attribute}} attribute value is not zero
  or the {{XMLHttpRequest/responseType}} attribute value is not the
  empty string, then <a>throw</a> an
  <code>InvalidAccessError</code> exception.
@@ -651,7 +651,7 @@ X-Test: one, two</code></pre>
 <p>The <dfn attribute for=XMLHttpRequest><code>timeout</code></dfn>
 attribute must return its value. Initially its value must be zero.
 
-<p>Setting the {{XMLHttpRequest/timeout}}
+<p>Setting the {{XMLHttpRequest/timeout!!attribute}}
 attribute must run these steps:
 
 <ol>
@@ -664,7 +664,7 @@ attribute must run these steps:
 </ol>
 
 <p class=note>This implies that the
-{{XMLHttpRequest/timeout}} attribute can be
+{{XMLHttpRequest/timeout!!attribute}} attribute can be
 set while <a for=/>fetching</a> is in
 progress. If that occurs it will still be measured relative to the start
 of <a for=/>fetching</a>.
@@ -886,7 +886,7 @@ method must run these steps:
    <a>total bytes</a>.
 
    <li>
-    <p><a>Fetch</a> <var>req</var>.
+    <p><a for=/>Fetch</a> <var>req</var>.
     Handle the <a>tasks</a>
     <a lt="queue a task">queued</a> on the
     <a>networking task source</a> per below.
@@ -904,8 +904,8 @@ method must run these steps:
        <li><p>Increase <var>milliseconds</var> by one.
 
        <li><p>If <var>milliseconds</var> is equal or greater than
-       the {{XMLHttpRequest/timeout}} attribute value and
-       the {{XMLHttpRequest/timeout}} attribute value is not
+       the {{XMLHttpRequest/timeout!!attribute}} attribute value and
+       the {{XMLHttpRequest/timeout!!attribute}} attribute value is not
        zero, <a for=fetch>terminate</a>
        <a for=/>fetching</a> with reason
        <i>timeout</i>.
@@ -1055,11 +1055,11 @@ method must run these steps:
     <p>Let <var>response</var> be the result of
     <a for=/>fetching</a> <var>req</var>.
 
-    <p>If the {{XMLHttpRequest/timeout}} attribute value is not
+    <p>If the {{XMLHttpRequest/timeout!!attribute}} attribute value is not
     zero, <a for=fetch>terminate</a> this
     <a for=/>fetch</a> if it has not returned
     within the amount of milliseconds from the
-    {{XMLHttpRequest/timeout}} attribute value with reason
+    {{XMLHttpRequest/timeout!!attribute}} attribute value with reason
     <i>timeout</i>.
 
    <li><p>If <var>response</var>'s
