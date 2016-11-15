@@ -1414,12 +1414,12 @@ that is null in which case it is the <a>response charset</a>.
  <li><p>If <a>response <code>ArrayBuffer</code> object</a> is non-null, return it.
 
  <li>
-  <p>Set <a>response <code>ArrayBuffer</code> object</a> to a new <code>ArrayBuffer</code>
+  <p>Set <a>response <code>ArrayBuffer</code> object</a> to a new {{ArrayBuffer}}
   object representing <a>received bytes</a>. If this throws an exception, then set
   <a>response <code>ArrayBuffer</code> object</a> to null and set <a>received bytes</a>
   to the empty byte sequence.
 
-  <p class=note>Allocating an <code>ArrayBuffer</code> buffer is not guaranteed to succeed.
+  <p class=note>Allocating an {{ArrayBuffer}} object is not guaranteed to succeed.
   [[!ECMASCRIPT]]
 
  <li><p>Return <a>response <code>ArrayBuffer</code> object</a>.
@@ -1913,7 +1913,7 @@ value of <a>entry</a>'s
  <li><p>If <var>value</var> is a {{Blob}} object and not a
  {{File}} object, then set <var>value</var> to a new
  {{File}} object, representing the same bytes, whose
- <a><code>name</code></a> attribute value is
+ {{File/name}} attribute value is
  "<code>blob</code>".
  <!-- XXX at some point File API should get internal slots for this -->
 
